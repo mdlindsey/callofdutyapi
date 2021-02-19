@@ -1,0 +1,410 @@
+{
+    "status": "success",
+    "data": {
+        "title": "bo4",
+        "platform": "xbl",
+        "username": "nathan4ag",
+        "type": "wz",
+        "level": 1.0,
+        "maxLevel": 0.0,
+        "levelXpRemainder": 800.0,
+        "levelXpGained": 200.0,
+        "prestige": 0.0,
+        "prestigeId": 0.0,
+        "maxPrestige": 0.0,
+        "totalXp": 200.0,
+        "paragonRank": 1.0,
+        "paragonId": 0.0,
+        "s": 0.0,
+        "p": 0.0,
+        "lifetime": {
+            "all": {
+                "properties": {
+                    "top10PlacementTeam": 0.0,
+                    "killsRevenge": 0.0,
+                    "topPlacementsAll": 0.0,
+                    "killsUnderwaterEnemy": 0.0,
+                    "accuracy": 0.23529411764705882,
+                    "downsEliminatedTeam": 0.0,
+                    "ekia": 1.0,
+                    "score": 0.0,
+                    "damagePerMinute": 16.684491978609625,
+                    "rank": 0.0,
+                    "distanceTraveledWingsuit": 144241.0,
+                    "deaths": 6.0,
+                    "frackingBlastDoorsOpened": 0.0,
+                    "wins": 0.0,
+                    "killsEliminated": 1.0,
+                    "itemsDropped": 0.0,
+                    "squads2Eliminated": 0.0,
+                    "winStreak": 0.0,
+                    "top5PlacementPlayer": 0.0,
+                    "distanceTraveledVehicleLand": 22713.0,
+                    "headshotDamage": 0.0,
+                    "revives": 0.0,
+                    "activationCountBroadcast": 0.0,
+                    "rankxp": 200.0,
+                    "placementxp": 100.0,
+                    "killsWithoutDamage": 1.0,
+                    "shots": 0.0,
+                    "downsEliminated": 0.0,
+                    "killsAfterRevive": 0.0,
+                    "top10PlacementTeamNoCircleDamage": 0.0,
+                    "ekiadRatio": 0.16666666666666666,
+                    "timePlayedTotal": 1496.0,
+                    "killxp": 100.0,
+                    "killsLongshotSniper": 0.0,
+                    "top5PlacementTeam": 0.0,
+                    "top15PlacementTeam": 0.0,
+                    "killsEquipment": 0.0,
+                    "winsLastAlive": 0.0,
+                    "totalDamage": 416.0,
+                    "itemsPickedUp": 109.0,
+                    "plevel": 0.0,
+                    "squads4Eliminated": 0.0,
+                    "killsEnemyInVehicleWater": 0.0,
+                    "misses": 53.0,
+                    "downsRevived": 0.0,
+                    "squadsEliminatedUnassisted": 0.0,
+                    "hitsHeadshot": 0.0,
+                    "basketsMade": 0.0,
+                    "killStreak": 1.0,
+                    "itemsHealthUsed": 2.0,
+                    "killsEnemyInVehicleLand": 0.0,
+                    "winxp": 0.0,
+                    "top10PlacementTeamPerks": 0.0,
+                    "hits": 16.0,
+                    "itemsBackpacksUsed": 2.0,
+                    "killsLongshot": 0.0,
+                    "mostKillsInAGame": 0.0,
+                    "killsEarlyPercentage": 0.0,
+                    "longestFiringRangeBullseye": 0.0,
+                    "killsVehiclePassenger": 0.0,
+                    "winPercentage": 0.0,
+                    "damagePerGame": 69.33333333333333,
+                    "activationCountCrane": 0.0,
+                    "tanborFudgelyInteractions": 0.0,
+                    "vehicleScavengerWater": 0.0,
+                    "losses": 0.0,
+                    "totalGamesPlayed": 6.0,
+                    "killsUnderwater": 0.0,
+                    "killsEnemyInVehicleAir": 0.0,
+                    "winsWithoutDown": 0.0,
+                    "wlratio": 0.0,
+                    "totalShots": 68.0,
+                    "destroyEquipment": 0.0,
+                    "killsEarly": 0.0,
+                    "ekiaPerGame": 0.16666666666666666,
+                    "characterQuestsCompleted": 0.0,
+                    "kdRatio": 0.166,
+                    "distanceTraveledWingsuitMiles": 2.0,
+                    "downs": 1.0,
+                    "top5FirstInventory": 0.0,
+                    "distanceTraveledVehicleWater": 0.0,
+                    "vehicleEscapes": 0.0,
+                    "curWinStreak": 0.0,
+                    "distanceTraveledVehicleLandMiles": 0.0,
+                    "vehicleScavengerAir": 0.0,
+                    "killsUnarmed": 0.0,
+                    "headshotPercentage": 0.0,
+                    "killsAfterDamage": 0.0,
+                    "top25PlacementPlayer": 0.0,
+                    "vehicleUsedAll": 0.0,
+                    "vehiclesDestroyed": 0.0,
+                    "topPlacementsPlayer": 0.0,
+                    "killsZombie": 0.0,
+                    "winsFirst": 0.0,
+                    "killsAfterDamageUnarmed": 0.0,
+                    "vehicleLockExits": 0.0,
+                    "distanceTraveledVehicleAir": 0.0,
+                    "topPlacementsTeam": 0.0,
+                    "killsWhileStunned": 0.0,
+                    "kills": 1.0,
+                    "distanceTraveledVehicleAirMiles": 0.0,
+                    "vehiclesDestroyedOccupied": 0.0,
+                    "top10PlacementPlayer": 0.0,
+                    "revivesPerGame": 0.0,
+                    "avgLifeTime": 124.66666666666667,
+                    "top5Avenger": 0.0,
+                    "vehicleDamageOccupied": 0.0,
+                    "activationCountJukebox": 0.0,
+                    "killsVehicleDriver": 0.0,
+                    "distanceTraveledFoot": 171651.0,
+                    "headshots": 0.0,
+                    "ties": 0.0,
+                    "assists": 0.0,
+                    "itemsPaintCansCollected": 1.0,
+                    "killsPerGame": 0.16666666666666666,
+                    "vehicleDamage": 0.0,
+                    "longestDistanceKill": 227.0,
+                    "distanceTraveledVehicleWaterMiles": 0.0,
+                    "vehiclesDestroyedOccupiedUsingVehicle": 0.0,
+                    "itemsNPaintCansCollected": 0.0,
+                    "maxFiringRangeBullseye": 0.0,
+                    "itemsArmorUsed": 5.0,
+                    "killsAvenged": 0.0,
+                    "winsWithoutKills": 0.0,
+                    "cargoSupplyOpened": 0.0,
+                    "vehicleScavengerLand": 0.0,
+                    "timePlayedAlive": 1475.0,
+                    "mostDamageInAGame": 0.0,
+                    "squads3Eliminated": 0.0
+                }
+            },
+            "mode": {},
+            "map": {},
+            "itemData": {},
+            "attachmentData": {},
+            "itemGroupData": {
+                "weapon_tactical": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 0.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 0.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 0.0
+                    }
+                },
+                "killstreak": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 0.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 0.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 0.0
+                    }
+                },
+                "weapon_cqb": {
+                    "properties": {
+                        "hits": 2.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 309.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 6.0,
+                        "damageDone": 73.0,
+                        "deathsDuringUse": 2.0,
+                        "deaths": 1.0
+                    }
+                },
+                "weapon_assault": {
+                    "properties": {
+                        "hits": 7.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 193.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 28.0,
+                        "damageDone": 143.0,
+                        "deathsDuringUse": 2.0,
+                        "deaths": 2.0
+                    }
+                },
+                "hero": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 0.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 0.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 0.0
+                    }
+                },
+                "weapon_grenade": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 0.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 3.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 1.0
+                    }
+                },
+                "weapon_sniper": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 0.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 0.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 0.0
+                    }
+                },
+                "feature": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 0.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 0.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 0.0
+                    }
+                },
+                "weapon_knife": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 0.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 0.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 0.0
+                    }
+                },
+                "weapon_special": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 0.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 0.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 0.0
+                    }
+                },
+                "talent": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 0.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 0.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 0.0
+                    }
+                },
+                "weapon_lmg": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 0.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 0.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 1.0
+                    }
+                },
+                "weapon_launcher": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 0.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 0.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 0.0
+                    }
+                },
+                "weapon_pistol": {
+                    "properties": {
+                        "hits": 7.0,
+                        "kills": 1.0,
+                        "headshots": 0.0,
+                        "timeUsed": 41.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 10.0,
+                        "damageDone": 200.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 0.0
+                    }
+                },
+                "miscweapon": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 614.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 0.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 1.0,
+                        "deaths": 0.0
+                    }
+                },
+                "weapon_smg": {
+                    "properties": {
+                        "hits": 0.0,
+                        "kills": 0.0,
+                        "headshots": 0.0,
+                        "timeUsed": 186.0,
+                        "assists": 0.0,
+                        "gamesUsed": 0.0,
+                        "used": 0.0,
+                        "shots": 16.0,
+                        "damageDone": 0.0,
+                        "deathsDuringUse": 0.0,
+                        "deaths": 1.0
+                    }
+                }
+            }
+        },
+        "weekly": {
+            "all": {
+                "properties": {}
+            },
+            "mode": {},
+            "map": {}
+        },
+        "engagement": null
+    }
+}

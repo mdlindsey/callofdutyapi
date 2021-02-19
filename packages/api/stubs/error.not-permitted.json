@@ -1,0 +1,7 @@
+{
+    "status": "error",
+    "data": {
+        "type": "com.activision.mt.common.stdtools.exceptions.NoStackTraceException",
+        "message": "Not permitted: not authenticated"
+    }
+}

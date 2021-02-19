@@ -1,0 +1,23 @@
+{
+    "status": "success",
+    "data": {
+        "titleIdentities": [
+            {
+                "title": "mw",
+                "platform": "psn",
+                "username": "rdtricky",
+                "activeDate": 1611545596000,
+                "activityType": "wz",
+                "id": null
+            },
+            {
+                "title": "cw",
+                "platform": "psn",
+                "username": "rdtricky",
+                "activeDate": 1610675166000,
+                "activityType": "mp",
+                "id": null
+            }
+        ]
+    }
+}

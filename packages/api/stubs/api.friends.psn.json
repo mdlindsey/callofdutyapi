@@ -1,0 +1,168 @@
+{
+    "status": "success",
+    "data": {
+        "uno": [
+            {
+                "username": "NitroLukeDX#3167998",
+                "platform": "uno",
+                "accountId": "4597807901312262079",
+                "status": {
+                    "online": true,
+                    "currentTitleId": "mw"
+                },
+                "dateAdded": 1607140829
+            },
+            {
+                "username": "sixnoskin#1274616",
+                "platform": "uno",
+                "accountId": "5433771507808184201",
+                "status": {
+                    "online": true,
+                    "currentTitleId": "mw"
+                },
+                "dateAdded": 1589514603
+            },
+            {
+                "username": "ImaCoolDad#7451526",
+                "platform": "uno",
+                "accountId": "2699217",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1601608618
+            },
+            {
+                "username": "CodenameAtom#6980882",
+                "platform": "uno",
+                "accountId": "10749895",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1603164449
+            },
+            {
+                "username": "MellowD#6992980",
+                "platform": "uno",
+                "accountId": "12309926",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1585617071
+            },
+            {
+                "username": "JSON#2168402",
+                "platform": "uno",
+                "accountId": "22495434",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1584061426
+            },
+            {
+                "username": "Squigiliwams#8560898",
+                "platform": "uno",
+                "accountId": "513504683376043307",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1584064194
+            },
+            {
+                "username": "SpicyPepsi#7104790",
+                "platform": "uno",
+                "accountId": "776468230892256089",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1590466494
+            },
+            {
+                "username": "Reaper#8425192",
+                "platform": "uno",
+                "accountId": "905054385237477685",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1610504606
+            },
+            {
+                "username": "SirSicksAlot#4013185",
+                "platform": "uno",
+                "accountId": "1324624931359249563",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1611112701
+            },
+            {
+                "username": "s1lentkilla954#4889059",
+                "platform": "uno",
+                "accountId": "4826500615730817327",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1590721488
+            },
+            {
+                "username": "SurgicalSeyeco#4992138",
+                "platform": "uno",
+                "accountId": "11321375336380114170",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1585542312
+            },
+            {
+                "username": "nathan4ag#8751629",
+                "platform": "uno",
+                "accountId": "13749821296297401523",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1586922910
+            },
+            {
+                "username": "XXXBLUEJAY420#7581099",
+                "platform": "uno",
+                "accountId": "14261651252368120950",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1595034824
+            },
+            {
+                "username": "xiahero#9445433",
+                "platform": "uno",
+                "accountId": "15330576675027458081",
+                "status": {
+                    "online": false
+                },
+                "dateAdded": 1587755255
+            }
+        ],
+        "incomingInvitations": [],
+        "outgoingInvitations": [],
+        "blocked": [],
+        "firstParty": {
+            "psn": [
+                {
+                    "username": "RickyMudcat",
+                    "platform": "psn",
+                    "avatarUrlLarge": "http://static-resource.np.community.playstation.net/avatar/WWS_A/A0011.png",
+                    "avatarUrlLargeSsl": "https://static-resource.np.community.playstation.net/avatar/WWS_A/A0011.png",
+                    "status": {
+                        "online": false
+                    },
+                    "identities": {
+                        "uno": {
+                            "username": "RickyMudcat#8483137",
+                            "platform": "uno",
+                            "accountId": "6832998113251891447"
+                        }
+                    }
+                }
+            ]
+        },
+        "firstPartyAuthNeeded": []
+    }
+}

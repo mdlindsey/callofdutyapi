@@ -1,0 +1,23 @@
+{
+    "status": "success",
+    "data": {
+        "titleIdentities": [
+            {
+                "title": "bo4",
+                "platform": "battle",
+                "username": "Dan#17890",
+                "activeDate": 1545098685000,
+                "activityType": "wz",
+                "id": null
+            },
+            {
+                "title": "mw",
+                "platform": "battle",
+                "username": "Dan#17890",
+                "activeDate": 1604354510000,
+                "activityType": "wz",
+                "id": null
+            }
+        ]
+    }
+}

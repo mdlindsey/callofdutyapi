@@ -1,0 +1,25 @@
+{
+  "name": "@callofduty/api",
+  "version": "1.2.4",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "tsc": "rimraf lib && tsc",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "@callofduty/types": "^1.2.4",
+    "axios": "^0.21.1",
+    "request": "^2.88.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "032ee186093c2e69aaa984284b035630792c5d98"
+}

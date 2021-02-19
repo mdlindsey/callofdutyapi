@@ -1,0 +1,14 @@
+{
+  "name": "stagg",
+  "private": true,
+  "scripts": {
+    "tsc": "lerna run tsc",
+    "build": "lerna run build"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}

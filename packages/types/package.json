@@ -1,0 +1,19 @@
+{
+  "name": "@callofduty/types",
+  "version": "1.2.4",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "tsc": "rimraf lib && tsc"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "032ee186093c2e69aaa984284b035630792c5d98"
+}

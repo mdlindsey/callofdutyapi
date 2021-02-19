@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "sourceMap": true,
+      "types": ["node"],
+      "declaration": true,
+      "noImplicitAny": true,
+      "removeComments": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "allowSyntheticDefaultImports": true,
+      "noLib": false,
+      "lib": [
+        "es6"
+      ]
+    },
+    "exclude": [
+      "node_modules",
+      "**/*.spec.ts"
+    ]
+}
