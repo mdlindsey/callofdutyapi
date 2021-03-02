@@ -9,6 +9,7 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@types/node": "^14.14.31",
     "lerna": "^3.22.1"
   }
 }
