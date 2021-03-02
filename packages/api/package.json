@@ -14,9 +14,11 @@
     "test": "mocha"
   },
   "dependencies": {
-    "@callofduty/types": "^1.2.4",
     "axios": "^0.21.1",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@callofduty/types": "^1.2.5"
   },
   "publishConfig": {
     "access": "public"
