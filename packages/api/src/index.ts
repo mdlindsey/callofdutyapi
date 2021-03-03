@@ -19,6 +19,14 @@ export default class {
     public async Identity():Promise<Schema.Routes.Identity> {
         return this.AuthenticatedRequest({ url: `/crm/cod/v2/identities` })
     }
+    /** Fetches user information of the authenticated account */
+    public async UserInfo():Promise<Schema.Routes.UserInfo> {
+        return this.ParsedAuthenticatedRequest({
+            method: 'GET',
+            url: `/userInfo/${this.tokens.sso}`,
+            baseURL: 'https://profile.callofduty.com/cod'
+        }, (r:string):Schema.Routes.UserInfo => JSON.parse(r.replace(/^userInfo\((.*)\);?$/i, '$1')))
+    }
     /** Fetches friends list for the authenticated account */
     public async Friends():Promise<Schema.Routes.Friends> {
         return this.AuthenticatedRequest({ url: `/codfriends/v1/compendium` })
@@ -26,6 +34,10 @@ export default class {
     /** Performs friend-related actions on a given unoId */
     public async FriendAction(unoId:string, action:'invite'|'uninvite'|'remove'|'block'|'unblock'):Promise<any> {
         return this.AuthenticatedRequest({ url: `/codfriends/v1/${action}/uno/id/${unoId}`, method: 'POST', data: JSON.stringify({}) })
+    }
+    /** Fetches all friends along with their profiles for the authenticated account */
+    public async FriendProfiles(profileId:Schema.ProfileId, game:Schema.Game, gameType:Schema.GameType):Promise<Schema.Routes.Profile[]> {
+        return this.AuthenticatedRequest({ url: `stats/cod/v1/title/${game}/${this.PlayerUrl(profileId)}/profile/friends/type/${gameType}` })
     }
     /** Update search visibility for the authenticated account */
     public async SearchVisibility(visibility:'all'|'none'|'friends', platform:Schema.Platform):Promise<any> {
@@ -142,5 +154,9 @@ export default class {
             + `ACT_SSO_COOKIE=${this.tokens.sso};`
             + `API_CSRF_TOKEN=3844e7b2-ac07-4c97-8c72-0fa9f43fdd26;`
         return this.GenericRequest(config, { Cookie: cookieStr, ...headers })
+    }
+    /** Facilitate an authenticated request to the API client and parse the results before returning */
+    protected async ParsedAuthenticatedRequest(config:Partial<AxiosRequestConfig>, parser:Function):Promise<any> {
+        return parser(await this.AuthenticatedRequest(config))
     }
 }
