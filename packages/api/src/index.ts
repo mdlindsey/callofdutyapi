@@ -35,6 +35,14 @@ export default class {
     public async ProfileVisibility(visibility:'all'|'none'|'friends'|'friends_tourneys', platform:Schema.Platform):Promise<any> {
         return this.AuthenticatedRequest({ url: `/setGamerPreference/${platform}/data_visible/${visibility}`, method: 'POST', baseURL: 'https://profile.callofduty.com/cod' })
     }
+    /** Fetches user information of the authenticated account */
+    public async UserInfo():Promise<Schema.Routes.UserInfo> {
+        return this.ParsedAuthenticatedRequest({
+            method: 'GET',
+            url: `/userInfo/${this.tokens.sso}`,
+            baseURL: 'https://profile.callofduty.com/cod'
+        }, (r:string):Schema.Routes.UserInfo => JSON.parse(r.replace(/^userInfo\((.*)\);?$/i, '$1')))
+    }
     /** Fetches full account identifiers list for the authenticated account */
     public async Accounts(profileId:Schema.ProfileId):Promise<Schema.Routes.Accounts> {
         return this.AuthenticatedRequest({ url: `/crm/cod/v2/accounts/${this.PlayerUrl(profileId)}` })
@@ -142,5 +150,9 @@ export default class {
             + `ACT_SSO_COOKIE=${this.tokens.sso};`
             + `API_CSRF_TOKEN=3844e7b2-ac07-4c97-8c72-0fa9f43fdd26;`
         return this.GenericRequest(config, { Cookie: cookieStr, ...headers })
+    }
+	/** Facilitate an authenticated request to the API client and parse the results before returning */
+    protected async ParsedAuthenticatedRequest(config:Partial<AxiosRequestConfig>, parser:Function):Promise<any> {
+        return parser(await this.AuthenticatedRequest(config))
     }
 }
