@@ -36,7 +36,7 @@ export default class {
         return this.AuthenticatedRequest({ url: `/setGamerPreference/${platform}/data_visible/${visibility}`, method: 'POST', baseURL: 'https://profile.callofduty.com/cod' })
     }
     /** Fetches user information of the authenticated account */
-    public async UserInfo():Promise<any> {
+    public async UserInfo():Promise<Schema.Routes.UserInfo> {
         return this.AuthenticatedRequest({ url: `/userInfo/${this.tokens.sso}`, method: 'GET', baseURL: 'https://profile.callofduty.com/cod' })
     }
     /** Fetches full account identifiers list for the authenticated account */
