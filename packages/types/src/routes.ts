@@ -32,7 +32,6 @@ export type MatchHistory = {
     matches: Schema.MW.Match[]
     summary: Record<'all' | Schema.MW.Mode, Schema.MW.Summary>
 }
-
 export type UserInfo = {
     status: null
     errors: {}

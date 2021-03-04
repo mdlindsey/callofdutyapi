@@ -155,7 +155,7 @@ export default class {
             + `API_CSRF_TOKEN=3844e7b2-ac07-4c97-8c72-0fa9f43fdd26;`
         return this.GenericRequest(config, { Cookie: cookieStr, ...headers })
     }
-    /** Facilitate an authenticated request to the API client and parse the results before returning */
+	/** Facilitate an authenticated request to the API client and parse the results before returning */
     protected async ParsedAuthenticatedRequest(config:Partial<AxiosRequestConfig>, parser:Function):Promise<any> {
         return parser(await this.AuthenticatedRequest(config))
     }
