@@ -1,6 +1,6 @@
 {
   "name": "@callofduty/api",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",
@@ -14,7 +14,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "@callofduty/types": "^1.2.4",
+    "@callofduty/types": "^1.2.5",
     "axios": "^0.21.1",
     "request": "^2.88.2"
   },
