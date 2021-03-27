@@ -64,7 +64,7 @@ export default class {
     }
     /** Login - exchange username + password for authentication tokens */
     public async Authorize(email:string, password:string, useTokens:boolean=true):Promise<{ xsrf: string, atkn: string, sso: string }> {
-        const initializeUrl = 'https://profile.callofduty.com/cod/login'
+        const initializeUrl = 'https://s.activision.com/activision/login'
         this.logger(`[>] API.CallOfDuty: ${initializeUrl}`)
         const initialPageLoad = await axios.get(initializeUrl, { timeout: 5000 }).catch(() => { throw 'activision timeout; please retry' })
         const xsrf = initialPageLoad?.headers['set-cookie'].find((cookie:string) => cookie.includes('XSRF-TOKEN='))?.replace(/^XSRF-TOKEN=([^;]+);.*$/, '$1')
@@ -74,9 +74,9 @@ export default class {
         // No response cookies with Axios so fugg it for now
         const { headers } = await this.AnonymousRequest({
             method: 'POST',
-            url: 'https://profile.callofduty.com/do_login?new_SiteId=cod',
+            url: 'https://s.activision.com/do_login?new_SiteId=activision',
             headers: {
-                'Cookie': `XSRF-TOKEN=${xsrf}; new_SiteId=cod;`,
+                'Cookie': `XSRF-TOKEN=${xsrf}; new_SiteId=activision;`,
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             form: {
