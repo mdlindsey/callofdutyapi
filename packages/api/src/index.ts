@@ -75,10 +75,10 @@ export default class {
         return this.AuthenticatedRequest({ url: `/crm/cod/v2/title/${game}/${playerUrl}/matches/${match.gameType}/start/${startThreshold}/end/${endThreshold}/details` })
     }
     /** Login - exchange username + password for authentication tokens */
-    public async Authorize(email:string, password:string, useTokens:boolean=true):Promise<{ xsrf: string, atkn: string, sso: string }> {
+    public async Authorize(email:string, password:string, useTokens:boolean=true, timeout:number=15000):Promise<{ xsrf: string, atkn: string, sso: string }> {
         const initializeUrl = 'https://s.activision.com/activision/login'
         this.logger(`[>] API.CallOfDuty: ${initializeUrl}`)
-        const initialPageLoad = await axios.get(initializeUrl, { timeout: 5000 }).catch(() => { throw 'activision timeout; please retry' })
+        const initialPageLoad = await axios.get(initializeUrl, { timeout }).catch(() => { throw 'activision timeout; please retry' })
         const xsrf = initialPageLoad?.headers['set-cookie'].find((cookie:string) => cookie.includes('XSRF-TOKEN='))?.replace(/^XSRF-TOKEN=([^;]+);.*$/, '$1')
         if (!xsrf) {
             throw 'activision failure; missing token'
