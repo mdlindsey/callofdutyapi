@@ -3,7 +3,9 @@ import axios, { AxiosRequestConfig } from 'axios'
 import * as Schema from '@callofduty/types'
 
 /** Call of Duty API */
-export default class {
+export default API
+
+export class API {
     constructor(
         protected readonly tokens = <Schema.Tokens>{},
         protected readonly logger = <Function>console.log,
