@@ -1,6 +1,6 @@
 {
   "name": "@callofduty/api",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",
