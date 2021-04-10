@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig } from 'axios'
 import * as Schema from '@callofduty/types'
 
 /** Call of Duty API */
-export default class {
+export class API {
     constructor(
         protected readonly tokens = <Schema.Tokens>{},
         protected readonly logger = <Function>console.log,
@@ -19,6 +19,14 @@ export default class {
     public async Identity():Promise<Schema.Routes.Identity> {
         return this.AuthenticatedRequest({ url: `/crm/cod/v2/identities` })
     }
+    /** Fetches user information of the authenticated account */
+    public async UserInfo():Promise<Schema.Routes.UserInfo> {
+        return this.ParsedAuthenticatedRequest({
+            method: 'GET',
+            url: `/userInfo/${this.tokens.sso}`,
+            baseURL: 'https://profile.callofduty.com/cod'
+        }, (r:string):Schema.Routes.UserInfo => JSON.parse(r.replace(/^userInfo\((.*)\);?$/i, '$1')))
+    }
     /** Fetches friends list for the authenticated account */
     public async Friends():Promise<Schema.Routes.Friends> {
         return this.AuthenticatedRequest({ url: `/codfriends/v1/compendium` })
@@ -27,6 +35,10 @@ export default class {
     public async FriendAction(unoId:string, action:'invite'|'uninvite'|'remove'|'block'|'unblock'):Promise<any> {
         return this.AuthenticatedRequest({ url: `/codfriends/v1/${action}/uno/id/${unoId}`, method: 'POST', data: JSON.stringify({}) })
     }
+    /** Fetches all friends along with their profiles for the authenticated account */
+    public async FriendProfiles(profileId:Schema.ProfileId, game:Schema.Game, gameType:Schema.GameType):Promise<Schema.Routes.Profile[]> {
+        return this.AuthenticatedRequest({ url: `stats/cod/v1/title/${game}/${this.PlayerUrl(profileId)}/profile/friends/type/${gameType}` })
+    }
     /** Update search visibility for the authenticated account */
     public async SearchVisibility(visibility:'all'|'none'|'friends', platform:Schema.Platform):Promise<any> {
         return this.AuthenticatedRequest({ url: `/setGamerPreference/${platform}/searchable/${visibility}`, method: 'POST', baseURL: 'https://profile.callofduty.com/cod' })
@@ -34,14 +46,6 @@ export default class {
     /** Update profile visibility for the authenticated account */
     public async ProfileVisibility(visibility:'all'|'none'|'friends'|'friends_tourneys', platform:Schema.Platform):Promise<any> {
         return this.AuthenticatedRequest({ url: `/setGamerPreference/${platform}/data_visible/${visibility}`, method: 'POST', baseURL: 'https://profile.callofduty.com/cod' })
-    }
-    /** Fetches user information of the authenticated account */
-    public async UserInfo():Promise<Schema.Routes.UserInfo> {
-        return this.ParsedAuthenticatedRequest({
-            method: 'GET',
-            url: `/userInfo/${this.tokens.sso}`,
-            baseURL: 'https://profile.callofduty.com/cod'
-        }, (r:string):Schema.Routes.UserInfo => JSON.parse(r.replace(/^userInfo\((.*)\);?$/i, '$1')))
     }
     /** Fetches full account identifiers list for the authenticated account */
     public async Accounts(profileId:Schema.ProfileId):Promise<Schema.Routes.Accounts> {
@@ -71,10 +75,10 @@ export default class {
         return this.AuthenticatedRequest({ url: `/crm/cod/v2/title/${game}/${playerUrl}/matches/${match.gameType}/start/${startThreshold}/end/${endThreshold}/details` })
     }
     /** Login - exchange username + password for authentication tokens */
-    public async Authorize(email:string, password:string, useTokens:boolean=true):Promise<{ xsrf: string, atkn: string, sso: string }> {
-        const initializeUrl = 'https://profile.callofduty.com/cod/login'
+    public async Authorize(email:string, password:string, useTokens:boolean=true, timeout:number=15000):Promise<{ xsrf: string, atkn: string, sso: string }> {
+        const initializeUrl = 'https://s.activision.com/activision/login'
         this.logger(`[>] API.CallOfDuty: ${initializeUrl}`)
-        const initialPageLoad = await axios.get(initializeUrl, { timeout: 5000 }).catch(() => { throw 'activision timeout; please retry' })
+        const initialPageLoad = await axios.get(initializeUrl, { timeout }).catch(() => { throw 'activision timeout; please retry' })
         const xsrf = initialPageLoad?.headers['set-cookie'].find((cookie:string) => cookie.includes('XSRF-TOKEN='))?.replace(/^XSRF-TOKEN=([^;]+);.*$/, '$1')
         if (!xsrf) {
             throw 'activision failure; missing token'
@@ -82,9 +86,9 @@ export default class {
         // No response cookies with Axios so fugg it for now
         const { headers } = await this.AnonymousRequest({
             method: 'POST',
-            url: 'https://profile.callofduty.com/do_login?new_SiteId=cod',
+            url: 'https://s.activision.com/do_login?new_SiteId=activision',
             headers: {
-                'Cookie': `XSRF-TOKEN=${xsrf}; new_SiteId=cod;`,
+                'Cookie': `XSRF-TOKEN=${xsrf}; new_SiteId=activision;`,
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             form: {
@@ -156,3 +160,5 @@ export default class {
         return parser(await this.AuthenticatedRequest(config))
     }
 }
+
+export default API
