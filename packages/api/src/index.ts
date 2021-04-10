@@ -3,8 +3,6 @@ import axios, { AxiosRequestConfig } from 'axios'
 import * as Schema from '@callofduty/types'
 
 /** Call of Duty API */
-export default API
-
 export class API {
     constructor(
         protected readonly tokens = <Schema.Tokens>{},
@@ -162,3 +160,5 @@ export class API {
         return parser(await this.AuthenticatedRequest(config))
     }
 }
+
+export default API
