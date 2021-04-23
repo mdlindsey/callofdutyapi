@@ -1,6 +1,6 @@
 {
   "name": "@callofduty/assets",
-  "version": "1.3.0",
+  "version": "1.3.5",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",
@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@callofduty/types": "^1.3.0"
+    "@callofduty/types": "^1.3.5"
   },
   "gitHead": "032ee186093c2e69aaa984284b035630792c5d98"
 }
