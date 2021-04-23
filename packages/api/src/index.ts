@@ -135,11 +135,13 @@ export class API {
         }
         this.logger(`[>] API.CallOfDuty: ${requestConfig.baseURL}${requestConfig.url}`)
         const { data:res, status } = await axios(requestConfig)
-        if (status !== 200 || res.status !== 'success') {
-            this.logger('[!] API Error:', res.data.message.replace('Not permitted: ', ''), res)
-            throw res.data.message.replace('Not permitted: ', '')
+        const isError = !res || status >= 400 || (res.status && res.status !== 'success')
+        if (isError) {
+            const errorCode = res?.data?.message?.replace('Not permitted: ', '') || 'UNKNOWN'
+            this.logger('[!] API Error:', errorCode, res)
+            throw errorCode
         }
-        return res.data
+        return res.data || res
     }
     /** Facilitate an authenticated request to the API client */
     protected async AuthenticatedRequest(config:Partial<AxiosRequestConfig>):Promise<any> {
