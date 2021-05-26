@@ -5,8 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Login / Call of Duty API - Provided by WARZONE.AI</title>
 	<!-- Don't forget to add your metadata here -->
-	<link rel='stylesheet' href='/assets/css/style.css' />
-	<link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
+	<link rel='stylesheet' href='../assets/css/style.css' />
+	<link rel='shortcut icon' type='image/x-icon' href='../assets/img/favicon.ico' />
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL88L2YKLJ"></script>
 	<script>
@@ -16,11 +16,15 @@
 		gtag('config', 'G-NL88L2YKLJ');
 	</script>
     <style type="text/css">
+        .hero__content__inner {
+            max-width: none;
+        }
+
         .activision-login-wrapper {
             padding: 32px;
             margin: 5vh auto 32px;
             border-radius: 12px;
-            background-image: url('assets/images/callofduty/auth.banner.png');
+            background-image: url('../assets/img/auth.banner.png');
             font-family: 'Open Sans Condensed', Verdana, Arial, Helvetica, sans-serif;
             background-repeat: no-repeat;
             background-position: center center;
@@ -39,6 +43,7 @@
             font-size: 22px;
             font-weight: bold;
             font-style: normal;
+            color: #eee;
             text-transform: uppercase;
             text-rendering: optimizeLegibility;
         }
@@ -49,13 +54,13 @@
             background-color: #0d121a;
             border: 1px solid #81898c;
             box-shadow: 0px 0px 30px -15px #999999 inset;
-            background-image: url('/assets/images/callofduty/auth.button.dots.png');
+            background-image: url('../assets/img/auth.button.dots.png');
         }
         .activision-login-wrapper button:hover {
             border-color: #fff;
         }
         .activision-login-wrapper .form-container {
-            margin: auto;
+            margin: 24px auto auto !important;
             width: 100%;
             max-width: 460px;
         }
@@ -83,6 +88,94 @@
         .activision-login-wrapper .floating-label select:not([value=""]):valid ~ label {
             left: 1px;
         }
+        
+        /****  floating-Lable style start ****/
+        .floating-label { 
+            position:relative; 
+            margin-bottom:20px; 
+        }
+        .floating-label input,
+        .floating-label select {
+            color:#fff;
+            font-size:18px;
+            padding:4px 4px;
+            display:block;
+            width:100%;
+            height:48px !important;
+            background-color: transparent;
+            border:none;
+            border-bottom:1px solid #757575;
+        }
+
+        .floating-label input:focus,
+        .floating-label select:focus {
+            outline:none;
+            border-bottom:2px solid#757575; /* #5264AE */
+        }
+
+        .floating-label label {
+            color:#999; 
+            font-size:14px;
+            font-weight:normal;
+            position:absolute;
+            pointer-events:none;
+            left:0 !important;
+            top:10px !important;
+            transition:0.2s ease all; 
+            -moz-transition:0.2s ease all; 
+            -webkit-transition:0.2s ease all;
+        }
+
+        .floating-label input:focus ~ label,
+        .floating-label input:not(:placeholder-shown) ~ label {
+            top:-20px !important;
+            left:-5px !important;
+            font-size:14px;
+            color:#757575; /* #5264AE */
+        }
+
+        .floating-label select:focus ~ label,
+        .floating-label select:not([value=""]):valid ~ label {
+            top:-20px !important;
+            left:-5px !important;
+            font-size:14px;
+            color:#757575; /* #5264AE */
+        }
+
+        /* active state */
+        .floating-label input:focus ~ .bar:before,
+        .floating-label input:focus ~ .bar:after,
+        .floating-label select:focus ~ .bar:before,
+        .floating-label select:focus ~ .bar:after {
+            width:50%;
+        }
+
+
+        .floating-label textarea {
+            min-height: 30px;
+            max-height: 260px; 
+            overflow:hidden;
+            overflow-x: hidden; 
+        }
+
+        .floating-label .highlight {
+            position:absolute;
+            height:50%; 
+            width:100%; 
+            top:15%; 
+            left:0;
+            pointer-events:none;
+            opacity:0.5;
+        }
+
+        /* active state */
+        .floating-label input:focus ~ .highlight,
+        .floating-label select:focus ~ .highlight {
+            -webkit-animation:inputHighlighter 0.3s ease;
+            -moz-animation:inputHighlighter 0.3s ease;
+            animation:inputHighlighter 0.3s ease;
+        }
+
     </style>
 </head>
 <body>
@@ -94,7 +187,7 @@
 				<a href="/" class="navbar__logo">Call of Duty API</a>
 				<nav class="navbar__menu">
 					<ul>
-						<li><a href="/">Home</a></li>
+						<li><a href="#back" onClick="history.back()">Go back</a></li>
 					</ul>
 				</nav>
 				<div class="navbar__menu-mob"><a href="" id='toggle'><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" class=""></path></svg></a></div>
@@ -109,58 +202,64 @@
 			<div class="container">
 				<div class="hero__content">
 					<div class="hero__content__inner" id='navConverter'>
-						<h1 class="hero__title">
-							Open-Source Call of Duty Data Platform
-						</h1>
-						<p class="hero__text center">
-							Full support for
-							Cold War, Warzone, Modern Warfare,
-							Black Ops 4, and WWII
-						</p>
-						<a href="#libraries" class="button button__accent scroll">Install packages</a>
-						<a href="https://postman.callofdutyapi.com" class="button hero__button">Run in Postman</a>
+
+
+
+
+
+
+
+
+                        <div class="container text-center activision-login-wrapper">
+                            <h2>JOIN THE WORLD OF</h2>
+                            <img src="../assets/img/auth.branding.png" alt="Call of Duty" />
+                            <h2>SIGN IN TO YOUR CALL OF DUTY ACCOUNT</h2>
+                            <div class="form-container">
+                                <div class="floating-label">
+                                    <input type="text" placeholder=" " />
+                                    <span class="highlight"></span>
+                                    <label>Email</label>
+                                </div>
+                                <div class="floating-label">
+                                    <input type="password" placeholder=" " />
+                                    <span class="highlight"></span>
+                                    <label>Password</label>
+                                </div>
+                                <button>SIGN IN</button>
+                                <p class="error"></p>
+                            </div>
+                        </div>
+                        <div class="container text-center">
+                            <p>
+                                2FA must be disabled for registration; 2FA may be re-enabled after registration is complete.
+                                <br />
+                                Password changes do not affect registration; you may reset or change your password at any time.
+                            </p>
+                            <p>
+                                <a target="_blank" href="https://profile.callofduty.com/cod/forgotPassword">
+                                    If you've forgotten your Activision or Call of Duty password, click here to reset it.
+                                </a>
+                            </p>
+                            <p>
+                                <a target="_blank" href="https://warzone.ai/discord/help">Still having trouble signing in? Contact us on Discord, we can help.</a>
+                            </p>
+                        </div>
+                    
+                    
+
+
+
+
+
+
+
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
-
-    <div class="container text-center activision-login-wrapper">
-        <h2>JOIN THE WORLD OF</h2>
-        <img src="/assets/images/callofduty/auth.branding.png" alt="Call of Duty" />
-        <h2>SIGN IN TO YOUR CALL OF DUTY ACCOUNT</h2>
-        <div class="form-container">
-            <div class="floating-label">
-                <input type="text" placeholder=" " />
-                <span class="highlight"></span>
-                <label>Email</label>
-            </div>
-            <div class="floating-label">
-                <input type="password" placeholder=" " />
-                <span class="highlight"></span>
-                <label>Password</label>
-            </div>
-            <button>SIGN IN</button>
-            <p class="error"></p>
-        </div>
-    </div>
-    <div class="container text-center">
-        <p>
-            2FA must be disabled for registration; 2FA may be re-enabled after registration is complete.
-            <br />
-            Password changes do not affect registration; you may reset or change your password at any time.
-        </p>
-        <p>
-            <a target="_blank" href="https://profile.callofduty.com/cod/forgotPassword">
-                If you've forgotten your Activision or Call of Duty password, click here to reset it.
-            </a>
-        </p>
-        <p>
-            <a target="_blank" href="/discord/help">Still having trouble signing in? Contact us on Discord, we can help.</a>
-        </p>
-    </div>
 
 
 	
@@ -188,12 +287,12 @@
 						<a href="https://github.com/mdlindsey/callofdutyapi" target="_blank" class="footer__link">GitHub</a>
 					</div>
 					<div class="footer__row">
-						<a href="https://discord.callofdutyapi.com" target="_blank" class="footer__link">Discord</a>
+						<a href="https://warzone.ai/discord/join" target="_blank" class="footer__link">Discord</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-<script src='assets/js/app.js'></script>
+<script src='../assets/js/app.js'></script>
 </body>
 </html>
