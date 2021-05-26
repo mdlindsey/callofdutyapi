@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta class="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Login / Call of Duty API - Provided by WARZONE.AI</title>
+	<!-- Don't forget to add your metadata here -->
+	<link rel='stylesheet' href='/assets/css/style.css' />
+	<link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL88L2YKLJ"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-NL88L2YKLJ');
+	</script>
+    <style type="text/css">
+        .activision-login-wrapper {
+            padding: 32px;
+            margin: 5vh auto 32px;
+            border-radius: 12px;
+            background-image: url('assets/images/callofduty/auth.banner.png');
+            font-family: 'Open Sans Condensed', Verdana, Arial, Helvetica, sans-serif;
+            background-repeat: no-repeat;
+            background-position: center center;
+            box-shadow: 0px 0px 30px -15px #999999 inset;
+        }
+
+        .activision-login-wrapper .error {
+            color: red;
+        }
+
+        .activision-login-wrapper > img {
+            max-width: 80vw;
+        }
+
+        .activision-login-wrapper h2 {
+            font-size: 22px;
+            font-weight: bold;
+            font-style: normal;
+            text-transform: uppercase;
+            text-rendering: optimizeLegibility;
+        }
+        .activision-login-wrapper button {
+            color: #fff;
+            width: 100%;
+            font-weight: 500;
+            background-color: #0d121a;
+            border: 1px solid #81898c;
+            box-shadow: 0px 0px 30px -15px #999999 inset;
+            background-image: url('/assets/images/callofduty/auth.button.dots.png');
+        }
+        .activision-login-wrapper button:hover {
+            border-color: #fff;
+        }
+        .activision-login-wrapper .form-container {
+            margin: auto;
+            width: 100%;
+            max-width: 460px;
+        }
+        .activision-login-wrapper .floating-label {
+            margin-bottom: 20px;
+        }
+        .activision-login-wrapper .floating-label input {
+            border: 1px solid #81898c;
+            border-radius: 4px;
+            padding-left: 12px;
+            width: calc(100% - 18px);
+            height: 42px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .activision-login-wrapper .floating-label label {
+            top: 16px;
+            left: 12px;
+        }
+        .activision-login-wrapper .floating-label input:focus ~ label,
+        .activision-login-wrapper .floating-label input:not(:placeholder-shown) ~ label {
+            left: 1px;
+        }
+
+        .activision-login-wrapper .floating-label select:focus ~ label,
+        .activision-login-wrapper .floating-label select:not([value=""]):valid ~ label {
+            left: 1px;
+        }
+    </style>
+</head>
+<body>
+	<!-- Hero(extended) navbar -->
+	<div class="navbar navbar--extended">
+		<nav class="nav__mobile"></nav>
+		<div class="container">
+			<div class="navbar__inner">
+				<a href="/" class="navbar__logo">Call of Duty API</a>
+				<nav class="navbar__menu">
+					<ul>
+						<li><a href="/">Home</a></li>
+					</ul>
+				</nav>
+				<div class="navbar__menu-mob"><a href="" id='toggle'><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" class=""></path></svg></a></div>
+			</div>
+		</div>
+	</div>
+	<!-- Hero unit -->
+	<div class="hero">
+		<div class="hero__overlay hero__overlay--gradient"></div>
+		<div class="hero__mask"></div>
+		<div class="hero__inner">
+			<div class="container">
+				<div class="hero__content">
+					<div class="hero__content__inner" id='navConverter'>
+						<h1 class="hero__title">
+							Open-Source Call of Duty Data Platform
+						</h1>
+						<p class="hero__text center">
+							Full support for
+							Cold War, Warzone, Modern Warfare,
+							Black Ops 4, and WWII
+						</p>
+						<a href="#libraries" class="button button__accent scroll">Install packages</a>
+						<a href="https://postman.callofdutyapi.com" class="button hero__button">Run in Postman</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+    <div class="container text-center activision-login-wrapper">
+        <h2>JOIN THE WORLD OF</h2>
+        <img src="/assets/images/callofduty/auth.branding.png" alt="Call of Duty" />
+        <h2>SIGN IN TO YOUR CALL OF DUTY ACCOUNT</h2>
+        <div class="form-container">
+            <div class="floating-label">
+                <input type="text" placeholder=" " />
+                <span class="highlight"></span>
+                <label>Email</label>
+            </div>
+            <div class="floating-label">
+                <input type="password" placeholder=" " />
+                <span class="highlight"></span>
+                <label>Password</label>
+            </div>
+            <button>SIGN IN</button>
+            <p class="error"></p>
+        </div>
+    </div>
+    <div class="container text-center">
+        <p>
+            2FA must be disabled for registration; 2FA may be re-enabled after registration is complete.
+            <br />
+            Password changes do not affect registration; you may reset or change your password at any time.
+        </p>
+        <p>
+            <a target="_blank" href="https://profile.callofduty.com/cod/forgotPassword">
+                If you've forgotten your Activision or Call of Duty password, click here to reset it.
+            </a>
+        </p>
+        <p>
+            <a target="_blank" href="/discord/help">Still having trouble signing in? Contact us on Discord, we can help.</a>
+        </p>
+    </div>
+
+
+	
+	<!-- Footer -->
+	<div class="footer footer--dark">
+		<div class="container">
+			<div class="footer__inner">
+				<a href="https://callofdutyapi.com" class="footer__textLogo">Call of Duty API</a>
+				<div class="footer__data">
+					<div class="footer__data__item">
+						<div class="footer__row">
+							Created by <a href="https://github.com/mdlindsey" target="_blank" class="footer__link">Dan Lindsey</a>
+						</div>
+					</div>
+					<div class="footer__data__item">
+						<div class="footer__row">
+							UI Design by <a href="https://undraw.co" target="_blank" class="footer__link">unDraw</a>
+						</div>
+					</div>
+					<div class="footer__data__item">
+					<div class="footer__row">
+						<a href="https://www.npmjs.com/package/@callofduty/api" target="_blank" class="footer__link">NPM</a>
+					</div>
+					<div class="footer__row">
+						<a href="https://github.com/mdlindsey/callofdutyapi" target="_blank" class="footer__link">GitHub</a>
+					</div>
+					<div class="footer__row">
+						<a href="https://discord.callofdutyapi.com" target="_blank" class="footer__link">Discord</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src='assets/js/app.js'></script>
+</body>
+</html>
