@@ -32,8 +32,9 @@
 		</div>
 	</div>
 
-    <div class="container" style="min-height: 90vh;">
-
+    <div class="container" style="min-height: 90vh; padding-top: 10vh;">
+        <h1 class="data-uno-username"></h1>
+        <h2>Games: <span class="data-games"></span></h2>
     </div>
 
 	
@@ -72,10 +73,25 @@
     if (!localStorage.getItem('jwt')) {
         window.location.href = '../login'
     }
+    function parseJwt(token) {
+        try {
+            return JSON.parse(atob(token.split('.')[1]))
+        } catch (e) {
+            return null
+        }
+    }
     function logout() {
         localStorage.setItem('jwt', '')
         window.location.href = '../login'
     }
+
+    function loadUI() {
+        const me = parseJwt(localStorage.getItem('jwt'))
+        document.querySelector('.data-games').innerHTML = me.games.map(g => g.toUpperCase()).join(', ')
+        document.querySelector('.data-uno-username').innerHTML = me.profile.uno
+    }
+
+    loadUI()
 </script>
 </body>
 </html>
