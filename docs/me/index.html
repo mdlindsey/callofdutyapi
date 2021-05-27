@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta class="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Login / Call of Duty API - Provided by WARZONE.AI</title>
+	<!-- Don't forget to add your metadata here -->
+	<link rel='stylesheet' href='../assets/css/style.css' />
+	<link rel='shortcut icon' type='image/x-icon' href='../assets/img/favicon.ico' />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL88L2YKLJ"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-NL88L2YKLJ');
+	</script>
+</head>
+<body>
+	<div class="navbar">
+		<nav class="nav__mobile"></nav>
+		<div class="container">
+			<div class="navbar__inner">
+				<a href="/" class="navbar__logo">Call of Duty API</a>
+				<nav class="navbar__menu">
+					<ul>
+						<li><a href="#logout" onClick={logout()}>Sign out</a></li>
+					</ul>
+				</nav>
+				<div class="navbar__menu-mob"><a href="" id='toggle'><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" class=""></path></svg></a></div>
+			</div>
+		</div>
+	</div>
+
+    <div class="container" style="min-height: 90vh;">
+
+    </div>
+
+	
+	<!-- Footer -->
+	<div class="footer footer--dark">
+		<div class="container">
+			<div class="footer__inner">
+				<a href="https://callofdutyapi.com" class="footer__textLogo">Call of Duty API</a>
+				<div class="footer__data">
+					<div class="footer__data__item">
+						<div class="footer__row">
+							Created by <a href="https://github.com/mdlindsey" target="_blank" class="footer__link">Dan Lindsey</a>
+						</div>
+					</div>
+					<div class="footer__data__item">
+						<div class="footer__row">
+							UI Design by <a href="https://undraw.co" target="_blank" class="footer__link">unDraw</a>
+						</div>
+					</div>
+					<div class="footer__data__item">
+					<div class="footer__row">
+						<a href="https://www.npmjs.com/package/@callofduty/api" target="_blank" class="footer__link">NPM</a>
+					</div>
+					<div class="footer__row">
+						<a href="https://github.com/mdlindsey/callofdutyapi" target="_blank" class="footer__link">GitHub</a>
+					</div>
+					<div class="footer__row">
+						<a href="https://warzone.ai/discord/join" target="_blank" class="footer__link">Discord</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src='../assets/js/app.js'></script>
+<script>
+    if (!localStorage.getItem('jwt')) {
+        window.location.href = '../login'
+    }
+    function logout() {
+        localStorage.setItem('jwt', '')
+        window.location.href = '../login'
+    }
+</script>
+</body>
+</html>

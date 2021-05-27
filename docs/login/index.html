@@ -16,13 +16,16 @@
 		gtag('config', 'G-NL88L2YKLJ');
 	</script>
     <style type="text/css">
+        #tfa-form {
+            display: none;
+        }
+
         .hero__content__inner {
             max-width: none;
         }
 
         .activision-login-wrapper {
             padding: 32px;
-            margin: 5vh auto 32px;
             border-radius: 12px;
             background-image: url('../assets/img/auth.banner.png');
             font-family: 'Open Sans Condensed', Verdana, Arial, Helvetica, sans-serif;
@@ -49,7 +52,8 @@
         }
         .activision-login-wrapper button {
             color: #fff;
-            width: 100%;
+            width: calc(100% - 18px);
+            margin-left: -18px;
             font-weight: 500;
             background-color: #0d121a;
             border: 1px solid #81898c;
@@ -215,26 +219,30 @@
                             <img src="../assets/img/auth.branding.png" alt="Call of Duty" />
                             <h2>SIGN IN TO YOUR CALL OF DUTY ACCOUNT</h2>
                             <div class="form-container">
-                                <div class="floating-label">
-                                    <input type="text" placeholder=" " />
-                                    <span class="highlight"></span>
-                                    <label>Email</label>
+                                <div id="credentials-form">
+                                    <div class="floating-label">
+                                        <input type="text" placeholder=" " id="activision-email" />
+                                        <span class="highlight"></span>
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="floating-label">
+                                        <input type="password" placeholder=" " id="activision-password" />
+                                        <span class="highlight"></span>
+                                        <label>Password</label>
+                                    </div>
                                 </div>
-                                <div class="floating-label">
-                                    <input type="password" placeholder=" " />
-                                    <span class="highlight"></span>
-                                    <label>Password</label>
+                                <div id="tfa-form">
+                                    <div class="floating-label">
+                                        <input type="text" placeholder=" " id="tfa-code" />
+                                        <span class="highlight"></span>
+                                        <label>2FA Code</label>
+                                    </div>
                                 </div>
-                                <button>SIGN IN</button>
-                                <p class="error"></p>
+                                <button id="activision-login-button">SIGN IN</button>
+                                <p class="error" id="activision-auth-error"></p>
                             </div>
                         </div>
                         <div class="container text-center">
-                            <p>
-                                2FA must be disabled for registration; 2FA may be re-enabled after registration is complete.
-                                <br />
-                                Password changes do not affect registration; you may reset or change your password at any time.
-                            </p>
                             <p>
                                 <a target="_blank" href="https://profile.callofduty.com/cod/forgotPassword">
                                     If you've forgotten your Activision or Call of Duty password, click here to reset it.
@@ -294,5 +302,79 @@
 		</div>
 	</div>
 <script src='../assets/js/app.js'></script>
+<script>
+    let tfaJwt = ''
+    if (localStorage.getItem('jwt')) {
+        window.location.href = '../me'
+    }
+    function loginSuccess(jwt) {
+        localStorage.setItem('jwt', jwt)
+        window.location.href = '../me'
+    }
+    function clearError() {
+        document.getElementById('activision-auth-error').innerText = ''
+    }
+    function showError(err) {
+        document.getElementById('activision-auth-error').innerText = err
+    }
+    async function use2FA() {
+        const tfaCode = document.getElementById('tfa-code').value
+        if (!tfaCode) {
+            showError('2FA code required')
+            return
+        }
+        const res = await fetch(`${window.apiUrl}/user?tfa=true`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ jwt: tfaJwt, tfa: tfaCode })
+        })
+        const resJson = await res.json()
+        if (res.status >= 400) {
+            showError(resJson.message || `${res.status} error`)
+            return
+        }
+        loginSuccess(resJson.jwt)
+    }
+    async function exchangeCredentials() {
+        const email = document.getElementById('activision-email').value
+        const password = document.getElementById('activision-password').value
+        if (!email || !email.match(/^.*@.*\..*$/)) {
+            showError('Valid email required')
+            return
+        }
+        if (!password.trim()) {
+            showError('Password required')
+            return
+        }
+        const res = await fetch(`${window.apiUrl}/user`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        })
+        const resJson = await res.json()
+        if (res.status >= 400) {
+            showError(resJson.message || `${res.status} error`)
+            return
+        }
+        if (resJson.tfa) {
+            tfaJwt = resJson.tfa
+            // Show 2FA Code form input and hide email/password inputs
+            document.getElementById('tfa-form').style.display = 'block'
+            document.getElementById('credentials-form').style.display = 'none'
+            return
+        }
+        loginSuccess(resJson.jwt)
+    }
+    async function tryLogin() {
+        clearError()
+        if (tfaJwt) {
+            use2FA()
+        } else {
+            exchangeCredentials()
+        }
+    }
+    document.addEventListener('keyup', e => e.keyCode === 13 ? tryLogin() : null)
+    document.getElementById('activision-login-button').onclick = () => tryLogin()
+</script>
 </body>
 </html>

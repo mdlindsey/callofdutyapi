@@ -1,3 +1,4 @@
+window.apiUrl = 'http://localhost:8080'
 // Equivalent of jQuery .ready
 document.addEventListener('DOMContentLoaded',function(){
 

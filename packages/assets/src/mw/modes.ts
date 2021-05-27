@@ -18,6 +18,50 @@ export interface ModeDetails {
 const Mode = (modeId:Schema.MW.Mode):ModeDetails => Modes[modeId]
 const Modes = {} as Record<Schema.MW.Mode, ModeDetails>
 
+/*
+br_104
+br_76
+br_brbbduo
+br_brdov_dov2
+br_brhwnquad
+br_brsolohwn
+br_brz_brduos
+br_brz_brquads
+br_brz_brsolo
+br_brz_brtrios
+br_dmz_bldmnyquad
+br_dmz_bldmnytrio
+br_dmz_plndval1
+br_exfiltrios
+br_jugg_jugpmpkn
+br_kingslayer_rebirth_king_slayer
+br_mini_rebirth_mini_royale_duos
+br_mini_rebirth_mini_royale_quads
+br_mini_rebirth_mini_royale_solo
+br_mini_rebirth_mini_royale_trios
+br_miniroyale
+
+br_plnbld
+br_plndtrios
+br_plndval1
+br_plunquad
+
+br_rbrthduos
+br_rbrthquad
+br_rbrthtrios
+br_rebirth_mini_royale_duos
+br_rebirth_mini_royale_quads
+br_rebirth_rbrthduos
+br_rebirth_rbrthex
+br_rebirth_rbrthquad
+br_rebirth_rbrthtrios
+br_rebirth_resurgence_trios
+
+br_reveal_2_dov2
+br_reveal_dov
+
+*/
+
 // BR Solos
 Modes.br_87 = {
     id: 'br_87',
@@ -67,6 +111,7 @@ Modes.br_brtrios = { ...Modes.br_74, id: 'br_brtrios' }
 Modes.br_jugg_brtriojugr = { ...Modes.br_74, id: 'br_jugg_brtriojugr', name: 'BR Juggernaut Trios' } // juggernaut drops in trios
 Modes.br_brtriostim_name2 = { ...Modes.br_74, id: 'br_brtriostim_name2', name: 'BR Stimulus Trios' } // auto respawn if >$4500
 Modes.br_zxp_zmbroy = { ...Modes.br_74, id: 'br_zxp_zmbroy', name: 'Zombie Royale', respawns: true, gulag: false } // respawn as zombie if die as human
+Modes.br_zmbroy = { ...Modes.br_zxp_zmbroy, id: 'br_zmbroy' }
 Modes.br_brhwntrios = { ...Modes.br_74, id: 'br_brhwntrios', name: 'BR Trios (Night)' }  // night map
 Modes.br_kingslayer_kingsltrios = { ...Modes.br_74, id: 'br_kingslayer_kingsltrios', name: 'King Slayer Trios' }  // kingslayer
 
@@ -90,11 +135,15 @@ Modes.br_jugg_brquadjugr = { ...Modes.br_89, id: 'br_jugg_brquadjugr', name: 'BR
 Modes.br_brbbquad = { ...Modes.br_89, id: 'br_brbbquad', name: 'BR Buyback Quads' } // auto respawn if >$4500
 Modes.br_truckwar_trwarsquads = { ...Modes.br_89, id: 'br_truckwar_trwarsquads', name: 'Armored Royale Quads', respawns: true, gulag: false } // armored truck respawn points
 
+// Resurgence / rebirth
+// Modes.br_rebirth_resurgence_trios = {  }
+
 // BR Mini
-Modes.br_mini_miniroyale = { ...Modes.br_74, lobbySize: 75, respawns: true, name: 'Mini Royale' } // mini trios
+Modes.br_mini_miniroyale = { ...Modes.br_74, lobbySize: 75, respawns: true, name: 'Mini Royale', id: 'br_mini_miniroyale' } // mini trios
 
 // BR TDM
-Modes.brtdm_rmbl = { ...Modes.br_89, lobbySize: 150, teamSize: 6, respawns: true, name: 'Warzone Rumble' }
+Modes.brtdm_rmbl = { ...Modes.br_89, lobbySize: 150, teamSize: 6, respawns: true, name: 'Warzone Rumble', id: 'brtdm_rmbl' }
+Modes.brtdm_wzrumval2 = { ...Modes.brtdm_rmbl, id: 'brtdm_wzrumval2' }
 
 // Plunder
 Modes.br_dmz_76 = {
