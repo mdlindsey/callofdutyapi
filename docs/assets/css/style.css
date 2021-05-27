@@ -1,4 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400");
+
+#api-status-indicator {
+  display: inline-block;
+  position: relative;
+  top: -3px;
+  margin-right: 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+#api-status-indicator.good {
+  background: rgba(0, 255, 0, 0.5);
+}
+#api-status-indicator.ok {
+  background: rgba(255, 255, 0, 0.5);
+}
+#api-status-indicator.bad {
+  background: rgba(255, 0, 0, 0.5);
+}
+
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */

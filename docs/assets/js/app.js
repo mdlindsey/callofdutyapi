@@ -1,4 +1,20 @@
 window.apiUrl = 'https://v1.callofdutyapi.com' //'http://localhost:8080'
+
+window.onload = async () => {
+	const statuses = ['good', 'ok', 'bad']
+	for(const status of statuses) {
+		document.getElementById('api-status-indicator').classList.remove(status)
+	}
+	try {
+		const healthRes = await fetch(`${window.apiUrl}/health`)
+		const isBarelyHealthy = healthRes.body.heapTotal / healthRes.body.heapTotal >= 0.8
+		document.getElementById('api-status-indicator').classList.add(isBarelyHealthy ? 'ok' : 'good')
+	} catch(e) {
+		document.getElementById('api-status-indicator').classList.add('bad')
+	}
+}
+
+
 // Equivalent of jQuery .ready
 document.addEventListener('DOMContentLoaded',function(){
 
