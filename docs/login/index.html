@@ -311,6 +311,9 @@
         localStorage.setItem('jwt', jwt)
         window.location.href = '../me'
     }
+    function setButtonDisabled(disabled) {
+        document.getElementById('activision-login-button').disabled = disabled
+    }
     function clearError() {
         document.getElementById('activision-auth-error').innerText = ''
     }
@@ -366,12 +369,14 @@
         loginSuccess(resJson.jwt)
     }
     async function tryLogin() {
+        setButtonDisabled(true)
         clearError()
         if (tfaJwt) {
             use2FA()
         } else {
             exchangeCredentials()
         }
+        setButtonDisabled(false)
     }
     document.addEventListener('keyup', e => e.keyCode === 13 ? tryLogin() : null)
     document.getElementById('activision-login-button').onclick = () => tryLogin()
