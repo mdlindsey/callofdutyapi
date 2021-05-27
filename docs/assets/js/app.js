@@ -1,4 +1,4 @@
-window.apiUrl = 'http://localhost:8080'
+window.apiUrl = 'https://v1.callofdutyapi.com' //'http://localhost:8080'
 // Equivalent of jQuery .ready
 document.addEventListener('DOMContentLoaded',function(){
 
