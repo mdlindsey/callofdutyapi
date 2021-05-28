@@ -33,6 +33,17 @@
             width: calc(50% - 32px);
         }
 
+        @media all and (min-width:0px) and (max-width: 768px) {
+            .two-pane-panel {
+                position: relative;
+                display: block;
+                width: 100%;
+            }
+            .two-pane-panel:nth-of-type(2) {
+                margin-top: 64px;
+            }
+        }
+
         #dashboard ul {
             list-style: none;
             margin: 32px 0 0 0;
@@ -120,6 +131,36 @@
         #dashboard > .two-pane-panel > ul > li.expanded .app-details ul li h6:nth-of-type(2) {
             text-align: right;
         }
+
+        ul#authorized-apps {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        ul#authorized-apps > li {
+            padding: 0;
+            margin: 0;
+            width: 80%;
+            position: relative;
+        }
+        ul#authorized-apps > li:hover {
+            border-color: transparent !important;
+        }
+        ul#authorized-apps > li > * {
+            display: inline-block;
+        }
+        ul#authorized-apps > li > *:nth-child(1) {
+            margin: 0;
+            padding: 0;
+            width: 70%;
+        }
+        ul#authorized-apps > li > *:nth-child(2) {
+            position: absolute;
+            top: 0;
+            right: 24px;
+            padding: 0;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -143,6 +184,14 @@
             <h1 class="data-uno-username"></h1>
             <h6>Games: <span class="data-games"></span></h6>
             <h2>Stripe payments coming soon...</h2>
+            
+            <h3>Authorized Apps</h3>
+            <ul id="authorized-apps">
+                
+            </ul>
+
+
+
         </div>
         <div class="two-pane-panel">
             <button id="create-app-button" onclick={createNewApp()}>Create App</button>
@@ -214,6 +263,21 @@
         }
         window.location.reload()
     }
+    async function revokeAppAuthorization(appId, appName) {
+        const confirmation = confirm(
+            `Are you sure you wish to revoke access for ${appName}? ` + 
+            'This is irreversible. To allow this application to fetch data for your account, '+
+            'you must reauthorize the application through their website or serivce.'
+        )
+        if (!confirmation) {
+            return
+        }
+        await fetch(`${window.apiUrl}/me/oauth/${appId}`, {
+            method: 'DELETE',
+            headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') }
+        })
+        window.location.reload()
+    }
     function toggleAppInfo(appId) {
         const tile = document.getElementById(`app-tile__${appId}`)
         const tileStatus = document.querySelector(`#app-tile__${appId} .app-header a`)
@@ -272,6 +336,29 @@
         document.querySelector('.data-games').innerHTML = me.games.map(g => g.toUpperCase()).join(', ')
         document.querySelector('.data-uno-username').innerHTML = me.profile.uno
     }
+    async function loadAuthorizedApps() {
+        const res = await fetch(`${window.apiUrl}/me/apps/authorized`, {
+            method: 'GET',
+            headers: { 'x-authorization-jwt': localStorage.getItem('jwt') },
+        })
+        const resJson = await res.json()
+        const combinedHTML = []
+        for(const app of resJson) {
+            combinedHTML.push(parseAuthorizedAppHTML(app))
+        }
+        if (!combinedHTML.length) {
+            combinedHTML.push(`<li><h4 style="width: 100%;">No authorized apps</h4></li>`)
+        }
+        document.getElementById('authorized-apps').innerHTML = combinedHTML.join('\n')
+    }
+    function parseAuthorizedAppHTML(app) {
+        return `
+            <li>
+                <h4>${app.name}</h4>
+                <a onclick="revokeAppAuthorization('${app.id}', '${app.name.split('\'').join('')}')" href="#">revoke access</a>
+            </li>
+        `
+    }
     async function loadApps() {
         const res = await fetch(`${window.apiUrl}/me/apps`, {
             method: 'GET',
@@ -283,7 +370,7 @@
             combinedHTML.push(parseAppHTML(app))
         }
         if (!combinedHTML.length) {
-            combinedHTML.push(`<li><h3 style="width: 100%;">You do not have any apps yet</h3></li>`)
+            combinedHTML.push(`<li><h3 style="width: 100%;">No created apps</h3></li>`)
         }
         document.getElementById('apps-container').innerHTML = combinedHTML.join('\n')
     }
@@ -334,6 +421,7 @@
 
     loadStaticUI()
     loadApps()
+    loadAuthorizedApps()
 </script>
 </body>
 </html>

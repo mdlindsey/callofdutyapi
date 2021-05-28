@@ -53,7 +53,6 @@
         .activision-login-wrapper button {
             color: #fff;
             width: calc(100% - 18px);
-            margin-left: -18px;
             font-weight: 500;
             background-color: #0d121a;
             border: 1px solid #81898c;
@@ -228,7 +227,7 @@
             alert(resJson.message || `${res.status} http error`)
             return
         }
-        setTimeout(() => window.location.href = app.url.oauth + '?id='+me.profile.id+'&token='+resJson.user_token, 100)
+        setTimeout(() => window.location.href = app.url.oauth + '?id='+me.profile.id+'&token='+resJson.token, 100)
     }
 
     loadApp()
