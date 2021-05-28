@@ -319,7 +319,7 @@
                         </div>
                         <ul>
                             ${app.users.map(u => `
-                                <li><h6>${u.profile.uno}</h6><h6><a onclick="copySecret('xxx-app-specific-user-api-key-xxx')" href="#">copy api key</a></h6></li>
+                                <li><h6>${u.profile.uno}</h6><h6><a onclick="copySecret('${u.token}')" href="#">copy api key</a></h6></li>
                             `).join('\n')}
                         </ul>
                     </div>
