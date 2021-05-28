@@ -303,6 +303,10 @@
                         </div>
                         <div>
                             <h4>OAuth URL</h4>
+                            <a onclick="copySecret('https://callofdutyapi.com/oauth?app=${app.id}')" href="#">copy url</a>
+                        </div>
+                        <div>
+                            <h4>OAuth Redirect</h4>
                             <input id="app-prop-input__${app.id}__urlOAuth" type="text" onkeyup={updateAppProp(this)} placeholder="https://example.com/oauth" value="${app?.url?.oauth || ''}" />
                         </div>
                         <div>
