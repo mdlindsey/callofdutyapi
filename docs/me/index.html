@@ -37,38 +37,87 @@
             margin: 32px 0 0 0;
             padding: 0;
         }
-        #dashboard ul li {
+        #dashboard li {
             padding: 0;
-            cursor: pointer;
             border: 1px solid transparent;
         }
-        #dashboard ul li:hover {
-            border: 1px solid rgba(0,0,0,0.05);
+        #dashboard > .two-pane-panel > ul > li:hover,
+        #dashboard > .two-pane-panel > ul > li.expanded {
+            border-color: rgba(0,0,0,0.05);
         }
-        #dashboard ul li h3 {
+        #dashboard > .two-pane-panel > ul > li h3 {
             margin: 0;
             padding: 0;
             display: inline-block;
             width: 60%;
+            cursor: pointer;
         }
-        #dashboard ul li a {
+        #dashboard > .two-pane-panel > ul > li a {
             display: inline-block;
             width: 40%;
             text-align: right;
         }
-        #dashboard ul li .app-header {
+        #dashboard > .two-pane-panel > ul > li .app-header {
             padding: 12px;
         }
-        #dashboard ul li .app-header:hover {
+        #dashboard > .two-pane-panel > ul > li.expanded .app-header,
+        #dashboard > .two-pane-panel > ul > li .app-header:hover {
             background: rgba(0,0,0,0.05);
         }
-        #dashboard ul li .app-details {
+        #dashboard > .two-pane-panel > ul > li .app-details {
             display: none;
-            padding: 12px;
+        }
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details {
+            display: block;
         }
 
-        .client-secret {
-            display: none;
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details h4 {
+            margin: 0;
+            padding: 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details div h4 {
+            display: inline-block;
+            width: calc(50% - 18px);
+        }
+
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details div h4 + a,
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details div h4 + p,
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details div h4 + input {
+            display: inline-block;
+            text-align: right;
+            width: 50%;
+        }
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details div h4 + input {
+            border-radius: 8px;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details ul {
+            margin-top: 0;
+        }
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details ul li {
+            padding: 12px;
+        }
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details ul li h6 {
+            display: inline-block;
+            width: 50%;
+        }
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details ul li h6 + input {
+            display: inline-block;
+            border-radius: 8px;
+            text-align: left;
+            padding: 8px;
+            width: 50%;
+            margin-bottom: 0;
+        }
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details ul li:hover {
+            background: rgba(0,0,0,0.05);
+        }
+        #dashboard > .two-pane-panel > ul > li.expanded .app-details ul li h6:nth-of-type(2) {
+            text-align: right;
         }
     </style>
 </head>
@@ -94,18 +143,10 @@
             <h2>Games: <span class="data-games"></span></h2>
         </div>
         <div class="two-pane-panel">
-            <button id="create-app-button">Create App</button>
+            <button id="create-app-button" onclick={createNewApp()}>Create App</button>
             <h2 style="margin: 0 0 32px 0;">My Applications</h2>
             <hr />
-            <ul>
-                <li id="app-123" onclick="toggleAppInfo('app-123');">
-                    <div class="app-header">
-                        <h3>WARZONE.AI</h3><a onclick={copySecret()} href="#">copy secret</a>
-                    </div>
-                    <div class="app-details">
-                        <h6>Users</h6>
-                    </div>
-                </li>
+            <ul id="apps-container">
             </ul>
         </div>
     </div>
@@ -153,12 +194,37 @@
             return null
         }
     }
-    function toggleAppInfo(appId) {
-        const current = document.querySelector(`#${appId} .app-details`).style.display
-        document.querySelector(`#${appId} .app-details`).style.display = current === 'block' ? 'none' : 'block'
+    async function createNewApp() {
+        const appName = prompt('Name your application')
+        if (!appName) {
+            alert('App name required')
+            return
+        }
+        const res = await fetch(`${window.apiUrl}/me/apps`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') },
+            body: JSON.stringify({ name: appName })
+        })
+        const resJson = await res.json()
+        if (res.status >= 400) {
+            alert(resJson.message || `${res.status} http error`)
+            return
+        }
+        window.location.reload()
     }
-    function copySecret() {
-        const textToCopy = 'XXXXXXXXX'
+    function toggleAppInfo(appId) {
+        const tile = document.getElementById(`app-tile__${appId}`)
+        const tileStatus = document.querySelector(`#app-tile__${appId} .app-header a`)
+        const isExpanded = tile.classList.contains('expanded')
+        if (isExpanded) {
+            tile.classList.remove('expanded')
+            tileStatus.innerHTML = 'show'
+        } else {
+            tile.classList.add('expanded')
+            tileStatus.innerHTML = 'hide'
+        }
+    }
+    function copySecret(textToCopy) {
         var myTemporaryInputElement = document.createElement("input")
         myTemporaryInputElement.type = "text"
         myTemporaryInputElement.value = textToCopy
@@ -175,13 +241,68 @@
         window.location.href = '../login'
     }
 
-    function loadUI() {
+    function loadStaticUI() {
         const me = parseJwt(localStorage.getItem('jwt'))
         document.querySelector('.data-games').innerHTML = me.games.map(g => g.toUpperCase()).join(', ')
         document.querySelector('.data-uno-username').innerHTML = me.profile.uno
     }
+    async function loadApps() {
+        const res = await fetch(`${window.apiUrl}/me/apps`, {
+            method: 'GET',
+            headers: { 'x-authorization-jwt': localStorage.getItem('jwt') },
+        })
+        const resJson = await res.json()
+        const combinedHTML = []
+        for(const app of resJson) {
+            combinedHTML.push(parseAppHTML(app))
+        }
+        if (!combinedHTML.length) {
+            combinedHTML.push(`<li><h3>no apps</h3></li>`)
+        }
+        document.getElementById('apps-container').innerHTML = combinedHTML.join('\n')
+    }
+    function parseAppHTML(app) {
+        return `
+                <li id="app-tile__${app.id}">
+                    <div class="app-header" onclick="toggleAppInfo('${app.id}');">
+                        <h3>${app.name}</h3><a href="#">show</a>
+                    </div>
+                    <div class="app-details">
+                        <div>
+                            <h4>Token</h4>
+                            <a onclick="copySecret('${app.token}')" href="#">copy token</a>
+                        </div>
+                        <div>
+                            <h4>Secret</h4>
+                            <a onclick="copySecret('${app.secret}')" href="#">copy secret</a>
+                        </div>
+                        <div>
+                            <h4>OAuth URL</h4>
+                            <input type="text" placeholder="https://example.com/oauth" />
+                        </div>
+                        <div>
+                            <h4>Webhooks</h4>
+                            <a href="#"></a>
+                        </div>
+                        <ul>
+                            <li><h6>New match</h6><input type="text" placeholder="https://example.com/hooks/match" /></li>
+                            <li><h6>Profile update</h6><input type="text" placeholder="https://example.com/hooks/profile" /></li>
+                            <li><h6>New user signup</h6><input type="text" placeholder="https://example.com/hooks/signup" /></li>
+                        </ul>
+                        <div>
+                            <h4>Users</h4>
+                            <a href="#">1</a>
+                        </div>
+                        <ul>
+                            <li><h6>MellowD#6992980</h6><h6><a onclick="copySecret('xxx-app-specific-user-api-key-xxx')" href="#">copy api key</a></h6></li>
+                        </ul>
+                    </div>
+                </li>
+        `
+    }
 
-    loadUI()
+    loadStaticUI()
+    loadApps()
 </script>
 </body>
 </html>
