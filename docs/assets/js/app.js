@@ -1,4 +1,4 @@
-window.apiUrl = window.location.href.includes('callofdutyapi.com') ? 'https://v1.callofdutyapi.com' : 'http://localhost:8080'
+window.apiUrl = window.location.href.includes('https://callofdutyapi.com') ? 'https://v1.callofdutyapi.com' : 'http://localhost:8080'
 
 window.onload = async () => {
 	const statuses = ['good', 'ok', 'bad']

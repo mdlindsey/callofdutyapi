@@ -309,7 +309,11 @@
     }
     function loginSuccess(jwt) {
         localStorage.setItem('jwt', jwt)
-        window.location.href = '../me'
+        const [, paramStr] = window.location.href.split('?')
+        const params = (paramStr || '').split('&')
+        const appParam = params.find(p => p.includes('app='))
+        const [, appId] = (appParam || '').split('=')
+        window.location.href = appId ? '../oauth?app='+appId : '../me'
     }
     function setButtonDisabled(disabled) {
         document.getElementById('activision-login-button').disabled = disabled

@@ -19,6 +19,7 @@
         #dashboard {
             min-height: 90vh;
             padding-top: 10vh;
+            padding-bottom: 128px;
         }
         #create-app-button {
             position: absolute;
@@ -240,6 +241,31 @@
         localStorage.setItem('jwt', '')
         window.location.href = '../login'
     }
+    
+    const inputChangeTimeouts = {}
+    const propNameFormatters = {
+        urlOAuth: v => ({ url: { oauth: v } }),
+        urlHookMatch: v => ({ url: { hook: { match: v } } }),
+        urlHookProfile: v => ({ url: { hook: { profile: v } } }),
+        urlHookSignup: v => ({ url: { hook: { signup: v } } }),
+    }
+    function updateInputAfterLilBit(appId, propName, propValue) {
+        if (inputChangeTimeouts[propName]) {
+            clearTimeout(inputChangeTimeouts[propName])
+        }
+        inputChangeTimeouts[propName] = setTimeout(() => updateAppProp(appId, propName, propValue), 1500)
+    }
+    async function updateAppProp(target) {
+        const [appId, propName] = target.id.replace('app-prop-input__', '').split('__')
+        if (inputChangeTimeouts[propName]) {
+            clearTimeout(inputChangeTimeouts[propName])
+        }
+        inputChangeTimeouts[propName] = setTimeout(() => fetch(`${window.apiUrl}/me/apps/${appId}`, {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') },
+            body: JSON.stringify(propNameFormatters[propName](target.value))
+        }), 1500)
+    }
 
     function loadStaticUI() {
         const me = parseJwt(localStorage.getItem('jwt'))
@@ -257,7 +283,7 @@
             combinedHTML.push(parseAppHTML(app))
         }
         if (!combinedHTML.length) {
-            combinedHTML.push(`<li><h3>no apps</h3></li>`)
+            combinedHTML.push(`<li><h3 style="width: 100%;">You do not have any apps yet</h3></li>`)
         }
         document.getElementById('apps-container').innerHTML = combinedHTML.join('\n')
     }
@@ -278,16 +304,16 @@
                         </div>
                         <div>
                             <h4>OAuth URL</h4>
-                            <input type="text" placeholder="https://example.com/oauth" />
+                            <input id="app-prop-input__${app.id}__urlOAuth" type="text" onkeyup={updateAppProp(this)} placeholder="https://example.com/oauth" />
                         </div>
                         <div>
                             <h4>Webhooks</h4>
                             <a href="#"></a>
                         </div>
                         <ul>
-                            <li><h6>New match</h6><input type="text" placeholder="https://example.com/hooks/match" /></li>
-                            <li><h6>Profile update</h6><input type="text" placeholder="https://example.com/hooks/profile" /></li>
-                            <li><h6>New user signup</h6><input type="text" placeholder="https://example.com/hooks/signup" /></li>
+                            <li><h6>New match</h6><input type="text" placeholder="https://example.com/hooks/match" id="app-prop-input__${app.id}__urlHookMatch" type="text" onkeyup={updateAppProp(this)} /></li>
+                            <li><h6>Profile update</h6><input type="text" placeholder="https://example.com/hooks/profile" id="app-prop-input__${app.id}__urlHookProfile" type="text" onkeyup={updateAppProp(this)} /></li>
+                            <li><h6>New user signup</h6><input type="text" placeholder="https://example.com/hooks/signup" id="app-prop-input__${app.id}__urlHookSignup" type="text" onkeyup={updateAppProp(this)} /></li>
                         </ul>
                         <div>
                             <h4>Users</h4>
