@@ -370,7 +370,7 @@
             combinedHTML.push(parseAppHTML(app))
         }
         if (!combinedHTML.length) {
-            combinedHTML.push(`<li><h3 style="width: 100%;">No created apps</h3></li>`)
+            combinedHTML.push(`<li style="border-color: transparent !important;"><h3 style="width: 100%;">No created apps</h3></li>`)
         }
         document.getElementById('apps-container').innerHTML = combinedHTML.join('\n')
     }
