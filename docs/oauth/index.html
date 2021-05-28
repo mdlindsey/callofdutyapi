@@ -129,10 +129,10 @@
 
                         <div class="container text-center activision-login-wrapper">
                             <img src="../assets/img/auth.branding.png" alt="Call of Duty" />
-                            <h2>AUTHORIZE YOUR CALL OF DUTY ACCOUNT</h2>
+                            <h2 id="app-name">LOADING...</h2>
                             <div class="form-container">
                                 <h3 id="oauth-me-uno-username" style="color: #eee; margin-bottom: 32px;"></h3>
-                                <button id="activision-login-button">AUTHORIZE</button>
+                                <button id="activision-login-button" style="display: none;" onclick="authorizeApp()">AUTHORIZE</button>
                             </div>
                         </div>
                         <div class="container text-center">
@@ -199,6 +199,17 @@
         window.location.href = '../login?app='+appId
     }
 
+    let app
+    async function loadApp() {
+        const res = await fetch(`${window.apiUrl}/me/oauth/`+appId, {
+            method: 'GET',
+            headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') }
+        })
+        app = await res.json()
+        document.getElementById('app-name').innerHTML = `AUTHORIZE ${app.name}`
+        document.getElementById('activision-login-button').style.display = 'block'
+    }
+
     function parseJwt(token) {
         try {
             return JSON.parse(atob(token.split('.')[1]))
@@ -206,6 +217,21 @@
             return null
         }
     }
+
+    async function authorizeApp() {
+        const res = await fetch(`${window.apiUrl}/me/oauth/`+appId, {
+            method: 'PUT',
+            headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') }
+        })
+        const resJson = await res.json()
+        if (res.status >= 400) {
+            alert(resJson.message || `${res.status} http error`)
+            return
+        }
+        setTimeout(() => window.location.href = app.url.oauth + '?id='+me.profile.id+'&token='+resJson.user_token, 100)
+    }
+
+    loadApp()
 
     const me = parseJwt(localStorage.getItem('jwt'))
     document.getElementById('oauth-me-uno-username').innerHTML = me.profile.uno

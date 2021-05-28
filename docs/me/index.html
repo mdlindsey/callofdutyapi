@@ -247,7 +247,6 @@
         urlOAuth: v => ({ url: { oauth: v } }),
         urlHookMatch: v => ({ url: { hook: { match: v } } }),
         urlHookProfile: v => ({ url: { hook: { profile: v } } }),
-        urlHookSignup: v => ({ url: { hook: { signup: v } } }),
     }
     function updateInputAfterLilBit(appId, propName, propValue) {
         if (inputChangeTimeouts[propName]) {
@@ -304,23 +303,24 @@
                         </div>
                         <div>
                             <h4>OAuth URL</h4>
-                            <input id="app-prop-input__${app.id}__urlOAuth" type="text" onkeyup={updateAppProp(this)} placeholder="https://example.com/oauth" />
+                            <input id="app-prop-input__${app.id}__urlOAuth" type="text" onkeyup={updateAppProp(this)} placeholder="https://example.com/oauth" value="${app?.url?.oauth || ''}" />
                         </div>
                         <div>
                             <h4>Webhooks</h4>
                             <a href="#"></a>
                         </div>
                         <ul>
-                            <li><h6>New match</h6><input type="text" placeholder="https://example.com/hooks/match" id="app-prop-input__${app.id}__urlHookMatch" type="text" onkeyup={updateAppProp(this)} /></li>
-                            <li><h6>Profile update</h6><input type="text" placeholder="https://example.com/hooks/profile" id="app-prop-input__${app.id}__urlHookProfile" type="text" onkeyup={updateAppProp(this)} /></li>
-                            <li><h6>New user signup</h6><input type="text" placeholder="https://example.com/hooks/signup" id="app-prop-input__${app.id}__urlHookSignup" type="text" onkeyup={updateAppProp(this)} /></li>
+                            <li><h6>New match</h6><input type="text" placeholder="https://example.com/hooks/match" id="app-prop-input__${app.id}__urlHookMatch" type="text" onkeyup={updateAppProp(this)} value="${app?.url?.hook?.match || ''}" /></li>
+                            <li><h6>Profile update</h6><input type="text" placeholder="https://example.com/hooks/profile" id="app-prop-input__${app.id}__urlHookProfile" type="text" onkeyup={updateAppProp(this)} value="${app?.url?.hook?.profile || ''}" /></li>
                         </ul>
                         <div>
                             <h4>Users</h4>
-                            <a href="#">1</a>
+                            <a href="#">${app.users.length}</a>
                         </div>
                         <ul>
-                            <li><h6>MellowD#6992980</h6><h6><a onclick="copySecret('xxx-app-specific-user-api-key-xxx')" href="#">copy api key</a></h6></li>
+                            ${app.users.map(u => `
+                                <li><h6>${u.profile.uno}</h6><h6><a onclick="copySecret('xxx-app-specific-user-api-key-xxx')" href="#">copy api key</a></h6></li>
+                            `).join('\n')}
                         </ul>
                     </div>
                 </li>
