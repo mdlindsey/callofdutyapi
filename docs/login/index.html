@@ -330,7 +330,7 @@
             showError('2FA code required')
             return
         }
-        const res = await fetch(`${window.apiUrl}/user?tfa=true`, {
+        const res = await fetch(`${window.apiUrl}/me?tfa=true`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ jwt: tfaJwt, tfa: tfaCode })
@@ -353,7 +353,7 @@
             showError('Password required')
             return
         }
-        const res = await fetch(`${window.apiUrl}/user`, {
+        const res = await fetch(`${window.apiUrl}/me`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ email, password })
