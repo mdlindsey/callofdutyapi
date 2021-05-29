@@ -1,6 +1,6 @@
 export type Map = Map.MP | Map.WZ
 export namespace Map {
-    export type WZ = 'mp_kstenod' | 'mp_don3' | 'mp_donetsk' | 'mp_donetsk2'
+    export type WZ = 'mp_kstenod' | 'mp_don3' | 'mp_donetsk' | 'mp_donetsk2' | 'mp_don4' | 'mp_escape2' | 'mp_escape2_pm'
     export type MP = 'mp_hackney_am' | 'mp_hackney_yard' | 'mp_aniyah' | 'mp_euphrates' | 'mp_raid' | 'mp_m_pine' |
         'mp_m_stack' | 'mp_deadzone' | 'mp_quarry2' | 'mp_m_overunder' | 'mp_cave_am' | 'mp_cave' | 'mp_runner' |
         'mp_runner_pm' | 'mp_piccadilly' | 'mp_spear' | 'mp_spear_pm' | 'mp_petrograd' | 'mp_m_hill' | 'mp_m_king' |

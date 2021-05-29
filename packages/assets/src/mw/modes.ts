@@ -48,6 +48,9 @@ Modes.br_88 = {
 Modes.br_brduos = { ...Modes.br_88, id: 'br_brduos' }
 Modes.br_brduostim_name2 = { ...Modes.br_88, id: 'br_brduostim_name2', name: 'BR Stimulus Duos' }  // auto respawn if >$4500
 Modes.br_brduohwn = { ...Modes.br_88, id: 'br_brduohwn', name: 'BR Duos (Night)' }  // night map
+Modes.br_brz_brduos ={ ...Modes.br_88, id: 'br_brz_brduos', name: 'BR Duos' }
+Modes.br_rebirth_rbrthduos ={ ...Modes.br_88, id: 'br_rebirth_rbrthduos', name: 'BR Rebirth Duos' }
+Modes.br_mini_rebirth_mini_royale_duos ={ ...Modes.br_88, id: 'br_mini_rebirth_mini_royale_duos', name: 'BR Rebirth Mini Royale Duos' }
 
 // BR Trios
 Modes.br_74 = {
@@ -69,6 +72,12 @@ Modes.br_brtriostim_name2 = { ...Modes.br_74, id: 'br_brtriostim_name2', name: '
 Modes.br_zxp_zmbroy = { ...Modes.br_74, id: 'br_zxp_zmbroy', name: 'Zombie Royale', respawns: true, gulag: false } // respawn as zombie if die as human
 Modes.br_brhwntrios = { ...Modes.br_74, id: 'br_brhwntrios', name: 'BR Trios (Night)' }  // night map
 Modes.br_kingslayer_kingsltrios = { ...Modes.br_74, id: 'br_kingslayer_kingsltrios', name: 'King Slayer Trios' }  // kingslayer
+Modes.br_brz_brtrios = { ...Modes.br_74, id: 'br_brz_brtrios', name: 'BR Trios' }  // trios
+Modes.br_rebirth_rbrthtrios = { ...Modes.br_74, id: 'br_rebirth_rbrthtrios', name: 'BR Rebirth Trios' }  // Rebirth 3s
+Modes.br_mini_rebirth_mini_royale_trios = { ...Modes.br_74, id: 'br_mini_rebirth_mini_royale_trios', name: 'BR Rebirth Mini Royale Trios' }  // rebirth trios mini royale
+Modes.br_exfiltrios = { ...Modes.br_74, id: 'br_exfiltrios', name: 'BR Exfill Trios' }  // exfil trios
+Modes.br_bodycount_pwergrb = { ...Modes.br_74, id: 'br_bodycount_pwergrb', name: 'BR Power Grab Trios' }  // powergrab 
+Modes.br_rebirth_resurgence_trios = { ...Modes.br_74, id: 'br_rebirth_resurgence_trios', name: 'BR Rebirth Resurgence Trios' }
 
 // BR Quads
 Modes.br_89 = {
@@ -89,12 +98,17 @@ Modes.br_br_real = { ...Modes.br_86, id: 'br_br_real' }
 Modes.br_jugg_brquadjugr = { ...Modes.br_89, id: 'br_jugg_brquadjugr', name: 'BR Juggernaut Quads' } // juggernaut drops in quads
 Modes.br_brbbquad = { ...Modes.br_89, id: 'br_brbbquad', name: 'BR Buyback Quads' } // auto respawn if >$4500
 Modes.br_truckwar_trwarsquads = { ...Modes.br_89, id: 'br_truckwar_trwarsquads', name: 'Armored Royale Quads', respawns: true, gulag: false } // armored truck respawn points
+Modes.br_brz_brquads = { ...Modes.br_89, id: 'br_brz_brquads' }
+Modes.br_rebirth_rbrthquad = { ...Modes.br_89, id: 'br_rebirth_rbrthquad', name: 'BR Rebirth Quads' }
+Modes.br_mini_rebirth_mini_royale_quads = { ...Modes.br_89, id: 'br_mini_rebirth_mini_royale_quads', name: 'BR Rebirth Mini Royale Quads' }
+// Modes.br_brquads = { ...Modes.br_89, id: 'br_brquads' }
 
 // BR Mini
 Modes.br_mini_miniroyale = { ...Modes.br_74, lobbySize: 75, respawns: true, name: 'Mini Royale' } // mini trios
 
 // BR TDM
 Modes.brtdm_rmbl = { ...Modes.br_89, lobbySize: 150, teamSize: 6, respawns: true, name: 'Warzone Rumble' }
+Modes.brtdm_wzrumval2 = { ...Modes.br_89, lobbySize: 150, teamSize: 6, respawns: true, name: 'Warzone Rumble' } // TODO: double check
 
 // Plunder
 Modes.br_dmz_76 = {
@@ -114,6 +128,7 @@ Modes.br_dmz_plndtrios = { ...Modes.br_dmz_38, id: 'br_dmz_plndtrios' }
 Modes.br_dmz_plunquad = { ...Modes.br_dmz_76, id: 'br_dmz_plunquad', lobbySize: 152, teamSize: 4, name: 'Plunder Quads' }
 Modes.br_dmz_plnbld = { ...Modes.br_dmz_76, id: 'br_dmz_plnbld', lobbySize: 152, teamSize: 4, name: 'Plunder: Blood Money' }
 Modes.br_dmz_plndcndy = { ...Modes.br_dmz_76, id: 'br_dmz_plndcndy', lobbySize: 152, teamSize: 4, name: 'Plunder: Candy Collector' }
+Modes.br_dmz_plndval1 = { ...Modes.br_dmz_76, id: 'br_dmz_plndval1', lobbySize: 152, teamSize: 4, name: 'Plunder'}
 
 // Multiplayer
 Modes.grind = {

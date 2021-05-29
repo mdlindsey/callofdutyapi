@@ -544,7 +544,34 @@ const Maps:Record<Schema.MW.Map, MapDetails> = {
             minimap: minimap('mp_m_cornfield'),
             thumbnail: thumbnail('mp_m_cornfield'),
         }
-    }
+    },
+    mp_escape2: {
+        id: 'mp_escape2',
+        name: 'Rebirth Island',
+        type: 'wz',
+        images: {
+            // minimap: minimap('mp_don3'),
+            thumbnail: thumbnail('mp_escape2'),
+        }
+    },
+    mp_escape2_pm: {
+        id: 'mp_escape2_pm',
+        name: 'Rebirth Island (Night)',
+        type: 'wz',
+        images: {
+            // minimap: minimap('mp_don3'),
+            thumbnail: thumbnail('mp_escape2_pm'),
+        }
+    },
+    mp_don4: {
+        id: 'mp_don4',
+        name: 'Verdansk 84',
+        type: 'wz',
+        images: {
+            // minimap: minimap('mp_don3'),
+            thumbnail: thumbnail('mp_don4'),
+        }
+    },
 }
 
 export { Map, Maps }
