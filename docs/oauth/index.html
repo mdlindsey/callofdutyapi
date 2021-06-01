@@ -237,7 +237,7 @@
     loadApp()
 
     const me = parseJwt(localStorage.getItem('jwt'))
-    document.getElementById('oauth-me-uno-username').innerHTML = me.profile.uno
+    document.getElementById('oauth-me-uno-username').innerHTML = me.user.profile.uno
 </script>
 </body>
 </html>

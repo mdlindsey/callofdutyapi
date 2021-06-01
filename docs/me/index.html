@@ -333,8 +333,8 @@
 
     function loadStaticUI() {
         const me = parseJwt(localStorage.getItem('jwt'))
-        document.querySelector('.data-games').innerHTML = me.games.map(g => g.toUpperCase()).join(', ')
-        document.querySelector('.data-uno-username').innerHTML = me.profile.uno
+        document.querySelector('.data-games').innerHTML = me.user.games.map(g => g.toUpperCase()).join(', ')
+        document.querySelector('.data-uno-username').innerHTML = me.user.profile.uno
     }
     async function loadAuthorizedApps() {
         const res = await fetch(`${window.apiUrl}/me/apps/authorized`, {
