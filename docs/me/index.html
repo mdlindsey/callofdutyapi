@@ -360,7 +360,7 @@
         `
     }
     async function loadApps() {
-        const res = await fetch(`${window.apiUrl}/apps`, {
+        const res = await fetch(`${window.apiUrl}/apps/owned`, {
             method: 'GET',
             headers: { 'x-authorization-jwt': localStorage.getItem('jwt') },
         })
