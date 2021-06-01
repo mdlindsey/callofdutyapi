@@ -200,7 +200,7 @@
 
     let app
     async function loadApp() {
-        const res = await fetch(`${window.apiUrl}/me/oauth/`+appId, {
+        const res = await fetch(`${window.apiUrl}/oauth/`+appId, {
             method: 'GET',
             headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') }
         })
@@ -218,7 +218,7 @@
     }
 
     async function authorizeApp() {
-        const res = await fetch(`${window.apiUrl}/me/oauth/`+appId, {
+        const res = await fetch(`${window.apiUrl}/oauth/`+appId, {
             method: 'PUT',
             headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') }
         })

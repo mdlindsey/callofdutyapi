@@ -251,7 +251,7 @@
             alert('App name required')
             return
         }
-        const res = await fetch(`${window.apiUrl}/me/apps`, {
+        const res = await fetch(`${window.apiUrl}/apps`, {
             method: 'POST',
             headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') },
             body: JSON.stringify({ name: appName })
@@ -272,7 +272,7 @@
         if (!confirmation) {
             return
         }
-        await fetch(`${window.apiUrl}/me/oauth/${appId}`, {
+        await fetch(`${window.apiUrl}/oauth/${appId}`, {
             method: 'DELETE',
             headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') }
         })
@@ -324,7 +324,7 @@
         if (inputChangeTimeouts[propName]) {
             clearTimeout(inputChangeTimeouts[propName])
         }
-        inputChangeTimeouts[propName] = setTimeout(() => fetch(`${window.apiUrl}/me/apps/${appId}`, {
+        inputChangeTimeouts[propName] = setTimeout(() => fetch(`${window.apiUrl}/apps/${appId}`, {
             method: 'PATCH',
             headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') },
             body: JSON.stringify(propNameFormatters[propName](target.value))
@@ -337,7 +337,7 @@
         document.querySelector('.data-uno-username').innerHTML = me.user.profile.uno
     }
     async function loadAuthorizedApps() {
-        const res = await fetch(`${window.apiUrl}/me/apps/authorized`, {
+        const res = await fetch(`${window.apiUrl}/apps/authorized`, {
             method: 'GET',
             headers: { 'x-authorization-jwt': localStorage.getItem('jwt') },
         })
@@ -360,7 +360,7 @@
         `
     }
     async function loadApps() {
-        const res = await fetch(`${window.apiUrl}/me/apps`, {
+        const res = await fetch(`${window.apiUrl}/apps`, {
             method: 'GET',
             headers: { 'x-authorization-jwt': localStorage.getItem('jwt') },
         })
