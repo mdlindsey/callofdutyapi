@@ -202,7 +202,7 @@
     async function loadApp() {
         const res = await fetch(`${window.apiUrl}/oauth/`+appId, {
             method: 'GET',
-            headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') }
+            headers: { 'content-type': 'application/json', 'x-jwt': localStorage.getItem('jwt') }
         })
         app = await res.json()
         document.getElementById('app-name').innerHTML = `AUTHORIZE ${app.name}`
@@ -220,7 +220,7 @@
     async function authorizeApp() {
         const res = await fetch(`${window.apiUrl}/oauth/`+appId, {
             method: 'PUT',
-            headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') }
+            headers: { 'content-type': 'application/json', 'x-jwt': localStorage.getItem('jwt') }
         })
         const resJson = await res.json()
         if (res.status >= 400) {
@@ -230,7 +230,7 @@
         if (!app.url.oauth) {
             alert('No forwarding URL present, you may now return to the requested application')
         } else {
-            window.location.href = app.url.oauth + '?id='+me.profile.id+'&token='+resJson.token
+            window.location.href = app.url.oauth + '?id='+me.user.profile.id+'&token='+resJson.token
         }
     }
 

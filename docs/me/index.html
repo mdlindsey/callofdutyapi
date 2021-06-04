@@ -253,7 +253,7 @@
         }
         const res = await fetch(`${window.apiUrl}/apps`, {
             method: 'POST',
-            headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') },
+            headers: { 'content-type': 'application/json', 'x-jwt': localStorage.getItem('jwt') },
             body: JSON.stringify({ name: appName })
         })
         const resJson = await res.json()
@@ -274,7 +274,7 @@
         }
         await fetch(`${window.apiUrl}/oauth/${appId}`, {
             method: 'DELETE',
-            headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') }
+            headers: { 'content-type': 'application/json', 'x-jwt': localStorage.getItem('jwt') }
         })
         window.location.reload()
     }
@@ -326,7 +326,7 @@
         }
         inputChangeTimeouts[propName] = setTimeout(() => fetch(`${window.apiUrl}/apps/${appId}`, {
             method: 'PATCH',
-            headers: { 'content-type': 'application/json', 'x-authorization-jwt': localStorage.getItem('jwt') },
+            headers: { 'content-type': 'application/json', 'x-jwt': localStorage.getItem('jwt') },
             body: JSON.stringify(propNameFormatters[propName](target.value))
         }), 1500)
     }
@@ -339,7 +339,7 @@
     async function loadAuthorizedApps() {
         const res = await fetch(`${window.apiUrl}/apps/authorized`, {
             method: 'GET',
-            headers: { 'x-authorization-jwt': localStorage.getItem('jwt') },
+            headers: { 'x-jwt': localStorage.getItem('jwt') },
         })
         const resJson = await res.json()
         const combinedHTML = []
@@ -362,7 +362,7 @@
     async function loadApps() {
         const res = await fetch(`${window.apiUrl}/apps/owned`, {
             method: 'GET',
-            headers: { 'x-authorization-jwt': localStorage.getItem('jwt') },
+            headers: { 'x-jwt': localStorage.getItem('jwt') },
         })
         const resJson = await res.json()
         const combinedHTML = []
