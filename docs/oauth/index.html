@@ -193,7 +193,9 @@
     const [, paramStr] = window.location.href.split('?')
     const params = (paramStr || '').split('&')
     const appParam = params.find(p => p.includes('app='))
+    const contextParam = params.find(p => p.includes('context='))
     const [, appId] = (appParam || '').split('=')
+    const [, context] = (contextParam || '').split('=')
     if (!localStorage.getItem('jwt')) {
         window.location.href = '../login?app='+appId
     }
@@ -230,7 +232,7 @@
         if (!app.url.oauth) {
             alert('No forwarding URL present, you may now return to the requested application')
         } else {
-            window.location.href = app.url.oauth + '?id='+me.user.profile.id+'&token='+resJson.token
+            window.location.href = app.url.oauth + '?id='+me.user.profile.id+'&token='+resJson.token+'&context='+context
         }
     }
 

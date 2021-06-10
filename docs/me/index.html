@@ -161,6 +161,13 @@
             padding: 0;
             margin: 0;
         }
+
+        .user-container {
+            max-height: 320px;
+            overflow: scroll;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+        }
+
     </style>
 </head>
 <body>
@@ -330,7 +337,7 @@
 
     function loadStaticUI() {
         const me = parseJwt(localStorage.getItem('jwt'))
-        document.querySelector('.data-games').innerHTML = me.user.games.map(g => g.toUpperCase()).join(', ')
+        // document.querySelector('.data-games').innerHTML = me.user.games.map(g => g.toUpperCase()).join(', ') // this was removed
         document.querySelector('.data-uno-username').innerHTML = me.user.profile.uno
     }
     async function loadAuthorizedApps() {
@@ -402,7 +409,7 @@
                             <h4>Users</h4>
                             <a href="#">${app.users.length}</a>
                         </div>
-                        <ul>
+                        <ul class="user-container">
                             ${app.users.map(u => `
                                 <li><h6>${u.profile.uno}</h6><h6><a onclick="copySecret('${u.token}')" href="#">copy api key</a></h6></li>
                             `).join('\n')}
